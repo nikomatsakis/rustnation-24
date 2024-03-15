@@ -414,6 +414,22 @@ mark,
   width: 50px;
 }
 
+.line3-closure img {
+  position: absolute;
+  top: 210px;
+  left: 240px;
+  width: 50px;
+  transform: rotate(300deg);
+}
+
+.line3-upcast img {
+  position: absolute;
+  top: 220px;
+  left: 450px;
+  width: 50px;
+  transform: rotate(270deg);
+}
+
 .line3r img {
   position: absolute;
   top: 183px;
@@ -444,9 +460,30 @@ mark,
   width: 50px;
 }
 
+.line6 img {
+  position: absolute;
+  top: 270px;
+  left: 10px;
+  width: 50px;
+}
+
 .line7 img {
   position: absolute;
   top: 300px;
+  left: 10px;
+  width: 50px;
+}
+
+.line8 img {
+  position: absolute;
+  top: 320px;
+  left: 10px;
+  width: 50px;
+}
+
+.line10 img {
+  position: absolute;
+  top: 390px;
   left: 10px;
   width: 50px;
 }
@@ -597,6 +634,41 @@ blockquote p {
   color: white;
 }
 
+.speech-bubble.barbara {
+  background: #b82c7b;
+}
+
+.speech-bubble.barbara.left:after {
+  border-right-color: #b82c7b;
+}
+
+.speech-bubble.barbara.right:after {
+  border-left-color: #b82c7b;
+}
+
+.speech-bubble.ferris {
+  background: #f14527;
+}
+
+.speech-bubble.ferris.right:after {
+  border-left-color: #f14527;
+}
+
+.speech-bubble.ferris.topright:after {
+  border-bottom-color: #f14527;
+}
+
+.speech-bubble.alan {
+  background: #5914b8;
+}
+
+.speech-bubble.alan.right:after {
+  border-left-color: #5914b8;
+}
+
+.speech-bubble.alan.left:after {
+  border-right-color: #5914b8;
+}
 
 .speech-bubble.left:after {
   content: '';
@@ -644,47 +716,23 @@ blockquote p {
   transform: scale(-1, 1);
 }
 
-
-.speech-bubble.barbara {
-  background: #b82c7b;
+.thought.barbara {
+  background-color: #b82c7b;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-.speech-bubble.barbara.left:after {
-  border-right-color: #b82c7b;
+.thought.bubble1 {
+  height: 50px;
+  width: 50px;
 }
 
-.speech-bubble.barbara.right:after {
-  border-left-color: #b82c7b;
+.thought.bubble2 {
+  height: 35px;
+  width: 35px;
 }
 
-.speech-bubble.barbara.topright:after {
-  border-bottom-color: #b82c7b;
-}
-
-.speech-bubble.ferris {
-  background: #f14527;
-}
-
-.speech-bubble.ferris.left:after {
-  border-left-color: #f14527;
-}
-
-.speech-bubble.ferris.right:after {
-  border-left-color: #f14527;
-}
-
-.speech-bubble.ferris.topright:after {
-  border-bottom-color: #f14527;
-}
-
-.speech-bubble.alan.left:after {
-  border-left-color: #5914b8;
-}
-
-.speech-bubble.alan.right:after {
-  border-left-color: #5914b8;
-}
-
-.speech-bubble.alan.left:after {
-  border-right-color: #5914b8;
+.thought.bubble3 {
+  height: 25px;
+  width: 25px;
 }
