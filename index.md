@@ -581,7 +581,21 @@ Gee, thanks Ferris! My hero!
 
 ---
 
-template: thumbnailsbugferris
+template: thumbnailsbug
+
+.line6[![Arrow](./images/Arrow.png)]
+
+.abspos.left235.top320.p60[
+![Ferris](./images/rustacean-flat-gesture.png)
+]
+
+.abspos.left25.top540[
+.speech-bubble.topright.ferris[
+    Cannot assign to `counter`, as it is a<br>
+    captured variable in a `Fn` closure
+]]
+
+
 
 ---
 template: thumbnailsbug
