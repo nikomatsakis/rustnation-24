@@ -363,7 +363,7 @@ template: thumbnails
 ---
 name: thumbnailspar
 
-# One day, Barbara is thinking...
+# Parallelizing with Rayon
 
 ```rust
 fn make_thumbnails(images: &[Image]) -> Vec<Image> {
@@ -400,7 +400,7 @@ template: thumbnailspar
 
 ---
 name: meetalan
-# Let's tell a story
+# Adding telemetry
 
 ```rust
 fn make_thumbnails(images: &[Image]) -> Vec<Image> {
@@ -551,13 +551,14 @@ name: thumbnailsbugferris
 
 .line6[![Arrow](./images/Arrow.png)]
 
-.abspos.left235.top350.p60[
+.abspos.left235.top320.p60[
 ![Ferris](./images/rustacean-flat-gesture.png)
 ]
 
-.abspos.left25.top570[
+.abspos.left25.top540[
 .speech-bubble.topright.ferris[
-Hold up there buddy! What's this?
+Hold up there buddy!<br>
+This could cause a data race!
 ]]
 
 ---
@@ -565,7 +566,7 @@ template: thumbnailsbug
 
 .line6[![Arrow](./images/Arrow.png)]
 
-.abspos.left235.top350.p60[
+.abspos.left235.top320.p60[
 ![Ferris](./images/rustacean-flat-gesture.png)
 ]
 
@@ -691,7 +692,7 @@ Welp, now I know!
 
 ---
 
-
+![]
 
 ---
 
