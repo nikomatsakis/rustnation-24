@@ -36,12 +36,20 @@ h3 {
   color: grey;
 }
 
+.medium {
+  font-size: 80%;
+}
+
 .small {
   font-size: 60%;
 }
 
 .smaller {
   font-size: 50%;
+}
+
+.huge {
+  font-size: 300%;
 }
 
 ul {
@@ -247,6 +255,18 @@ mark,
   bottom: 20px;
   font-weight: 400;
   font-size: 0.5em;
+}
+
+.p10 img {
+  width: 10%;
+}
+
+.p20 img {
+  width: 20%;
+}
+
+.p30 img {
+  width: 30%;
 }
 
 .p80 img {
@@ -634,6 +654,10 @@ blockquote p {
   color: white;
 }
 
+.speech-bubble p {
+  text-align: left;
+}
+
 .speech-bubble.barbara {
   background: #b82c7b;
 }
@@ -735,4 +759,40 @@ blockquote p {
 .thought.bubble3 {
   height: 25px;
   width: 25px;
+}
+
+.rounded_corners {
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.padding20 {
+  padding: 20px;
+}
+
+.padding10 {
+  padding: 10px;
+}
+
+.bgactive {
+  background: #73AD21;
+}
+
+.bgsuspended {
+  background: #a8b496;
+}
+
+.bgfuture {
+  background: #2e1cf2;
+  color: white;
+}
+
+.bgfuture1 {
+  background: #5f51f8;
+  color: white;
+}
+
+.bgred {
+  background: red;
+  color: white;
 }
