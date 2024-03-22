@@ -1241,6 +1241,15 @@ Want to read more?
 
 ---
 
+# Where I hope we get to¹
+
+* Standard interop traits -- mix and match libraries
+* Standard structured concurrency 
+
+.footnote[¹ Speaking for myself here, not a consensus opinion.]
+
+---
+
 # Where else can we do better on reliability?
 
 | | What makes Rust *Rust*? | |
@@ -1265,32 +1274,268 @@ How many of you saw [cve-rs](https://github.com/Speykious/cve-rs)?
 
 * New trait solver:
     * unblocks bug fixes
-
 --
 * Spec work:
-    * Ferrocene open-sourced their spec
-    * building on that to create an official Rust spec
-
+    * Ferrocene [open-sourced](https://ferrous-systems.com/blog/ferrocene-open-source/) their [spec](https://github.com/ferrocene/specification)
+    * building on that to [create an official Rust spec](https://blog.rust-lang.org/inside-rust/2023/11/15/spec-vision.html)
 --
 * Developing Rust solvers
     * Stable MIR
-    * [Kani](https://model-checking.github.io/kani-verifier-blog/2023/08/03/turbocharging-rust-code-verification.html)
-        * [Cruesot](https://github.com/creusot-rs/creusot)
+    * [Kani](https://model-checking.github.io/kani-verifier-blog/2023/08/03/turbocharging-rust-code-verification.html), [Cruesot](https://github.com/creusot-rs/creusot), [Prusti](https://github.com/viperproject/prusti-dev), [Aeneas](https://github.com/AeneasVerif/aeneas)
 
 ---
 
-# Where I hope we get to
+# Where I hope we get to¹
 
-![Tokio crates.io page](./images/cio-tokio.png)
+.abspos.top90[![Tokio crates.io page](./images/cio-tokio.png)]
+
+.footnote[¹ Speaking for myself here, not a consensus opinion.]
 
 --
 
-.abspos.top620.left450.width200.height50.bgred.center[![unsafe-code](./images/unsafe-code-verified.svg)]
+.abspos.top580.left450.width200.height50.bgred.center[![unsafe-code](./images/unsafe-code-verified.svg)]
 
 ---
 
-# Where I hope we get to
+# Scaling accessibility
 
+| | What makes Rust *Rust*? | |
+| :-- | :-- | :-- |
+| ⚙️ | Reliable | |
+| 🏎️ | Performant, composable abstractions | |
+| 🔧 | Low-level control and transparency | |
+| 🌟 | Extensible and productive | |
+| .mark[🤸🏾] | .mark[Accessible and supportive] | |
+
+---
+
+# Rust error messages are great¹
+
+How many people here love Rust error messages?
+
+.footnote[¹ Now this IS a consensus opinion. In Esteban Küber and the Diagnostics WG we trust!]
+
+--
+
+![Mean girls](./images/mean-girls.gif)
+
+---
+
+# But remember this?
+
+.abspos.left50.top100.p60[
+![Ferris](./images/rustacean-flat-gesture.png)
+]
+
+.abspos.left375.top200[
+.speech-bubble.left.ferris[
+    Cannot assign to `counter`, as it is a<br>
+    captured variable in a `Fn` closure
+]]
+
+
+.abspos.left650.top350[![Alan is sad](./images/Alan-Sad.png)]
+
+.abspos.left200.top475[
+.speech-bubble.right.alan[
+I...have no idea what this means.
+]]
+
+---
+
+# What about [*this*](https://github.com/diesel-rs/diesel/issues/2450)?
+
+```
+the trait bound `diesel::query_builder::SelectStatement
+<schema::scripts::table, diesel::query_builder::select_clause
+::DefaultSelectClause, diesel::query_builder::distinct_claus
+e::NoDistinctClause, diesel::query_builder::where_clause::WhereClause<
+diesel::expression::operators::Eq<schema::scripts::columns::id,
+&str>>>: diesel::query_builder::IntoUpdateTarget` is not satisfied
+
+the trait `diesel::query_builder::IntoUpdateTarget` is not
+implemented for `diesel::query_builder::SelectStatement<
+schema::scripts::table, diesel::query_builder::select_clause
+::DefaultSelectClause, diesel::query_builder::distinct_clause
+::NoDistinctClause, diesel::query_builder::where_clause::WhereClause<
+diesel::expression::operators::Eq<schema::scripts::columns::id,
+&str>>>`
+
+help: the following implementations were found:
+<diesel::query_builder::SelectStatement<F,
+diesel::query_builder::select_clause::DefaultSelectClause,
+diesel::query_builder::distinct_clause::NoDistinctClause, W>
+as diesel::query_builder::IntoUpdateTarget>rustc(E0277)
+```
+
+---
+
+# Idea: what if crates could control their own?
+
+* `#[diagnostic::on_unimplemented]` -- custom trait error messages
+    * Coming May 2nd in Rust 1.78.0!
+    * Shout-out to Georg Semmler, Esteban Küber, Michael Goulet, and more!
+
+---
+ 
+# Can we go further?
+
+What if crates could *control their development experience*?
+
+Diagnostics?
+
+--
+
+.large[Lints??]
+
+--
+
+.huge[IDE refactorings???]
+
+---
+ 
+# Procedural macros today
+
+.abspos.left50.top150.bgactive.padding20[
+    Tokens
+]
+
+.abspos.left180.top150.huge[⇒]
+
+.abspos.left250.top125.bgactive.padding20[
+    Procedural<br>
+    macro
+]
+
+.abspos.left425.top150.huge[⇒]
+
+.abspos.left500.top150.bgactive.padding20[
+    Tokens
+]
+
+---
+ 
+# *Supercharged* procedural macros
+
+.abspos.left50.top150.bgactive.padding20[
+    Tokens
+]
+
+.abspos.left180.top150.huge[⇒]
+
+.abspos.left250.top125.bgactive.padding20[
+    Procedural<br>
+    macro
+]
+
+.abspos.left425.top150.huge[⇒]
+
+.abspos.left500.top150.bgactive.padding20[
+    Tokens
+]
+
+--
+
+.abspos.left50.top300.bgactive.padding20[
+    Type info
+]
+
+.abspos.left200.top270.huge[⇗]
+
+--
+
+.abspos.left50.top450.bgactive.padding20[
+    All that other stuff<br>
+    the compiler knows
+]
+
+.abspos.left220.top350.huge[⇗]
+
+--
+
+.abspos.left50.top300.bgactive.padding20[
+    Type info
+]
+
+.abspos.left200.top270.huge[⇗]
+
+--
+
+.abspos.left400.top270.bracket.red[}]
+
+.abspos.left500.top300.red.huge[
+    Stable MIR! (sort of)
+]
+
+---
+ 
+# Where I hope we get to¹
+
+* Compiler provides reflective APIs ("stable MIR")
+* Used to let crates build rich developer experiences
+    * Procedural macros, custom derives
+    * Lints, static verifiers, theorem provers
+    * Improved diagnostics
+
+.footnote[¹ Speaking for myself here, not a consensus opinion.]
+
+---
+name: values-support
+
+# Rust's values support each other
+
+| | What makes Rust *Rust*? | |
+| :-- | :-- | :-- |
+| ⚙️ | Reliable | |
+| 🏎️ | Performant, composable abstractions | |
+| 🔧 | Low-level control and transparency | |
+| 🌟 | Extensible and productive | |
+| 🤸🏾 | Accessible and supportive | |
+
+---
+template: values-support
+
+*Extensible* supports *Accessible*
+
+.abspos.left400.top280.huge.red[⤸]
+
+---
+template: values-support
+
+.abspos.left550.top125.fontsize800.red[⤸]
+
+*Reliable* supports *Accessible*
+
+---
+template: values-support
+
+.abspos.left540.top170.fontsize650.rot180.red[⤹]
+
+*Extensible* supports *Reliable*
+
+---
+template: values-support
+
+.abspos.left500.top305.fontsize200.red[}]
+
+.abspos.left550.top170.fontsize500.red[}]
+
+.abspos.left550.top260.fontsize350.rot270.red[⤿]
+
+...but *Accessible* and *Extensible* supports **everything**.
+
+---
+ 
+# Rich procedural macros
+
+
+
+
+How many people here love Rust error messages?
+
+.footnote[
+    Shout-out to Esteban Kueber, in the audience!
+]
 ---
 
 # I want to focus on these

@@ -5,6 +5,9 @@ function absolution() {
         var left = NaN;
         var width = NaN;
         var height = NaN;
+        var fontsize = NaN;
+        var rot = NaN;
+
         for (const c of e.classList) {
             if (c.startsWith("top")) {
                 top = Number(c.substring(3));
@@ -20,6 +23,14 @@ function absolution() {
 
             if (c.startsWith("height")) {
                 height = Number(c.substring(6));
+            }
+
+            if (c.startsWith("fontsize")) {
+                fontsize = Number(c.substring(8));
+            }
+
+            if (c.startsWith("rot")) {
+                rot = Number(c.substring(3));
             }
         }
 
@@ -43,6 +54,14 @@ function absolution() {
         if (height === height) {
             console.log(`found height ${height}`);
             e.style.height = `${height}px`;
+        }
+
+        if (fontsize === fontsize) {
+            e.style.fontSize = `${fontsize}%`;
+        }
+
+        if (rot === rot) {
+            e.style.transform = `rotate(${rot}deg)`;
         }
     }
 }

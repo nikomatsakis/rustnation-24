@@ -48,6 +48,10 @@ h3 {
   font-size: 50%;
 }
 
+.large {
+  font-size: 200%;
+}
+
 .huge {
   font-size: 300%;
 }
@@ -674,6 +678,10 @@ blockquote p {
   background: #f14527;
 }
 
+.speech-bubble.ferris.left:after {
+  border-right-color: #f14527;
+}
+
 .speech-bubble.ferris.right:after {
   border-left-color: #f14527;
 }
@@ -795,4 +803,13 @@ blockquote p {
 .bgred {
   background: red;
   color: white;
+}
+
+
+.red {
+  color: red;
+}
+
+.bracket {
+  font-size: 1000%;
 }
