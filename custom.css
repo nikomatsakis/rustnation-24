@@ -811,5 +811,10 @@ blockquote p {
 }
 
 .bracket {
-  font-size: 1000%;
+  font-size: 600%;
+  transform: scale(1, 2);
+}
+
+.bracket2 {
+  transform: scale(1, 2) rotate(45deg);
 }

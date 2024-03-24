@@ -1220,33 +1220,25 @@ Want to read more?
 
 | Year | Language |
 | ---  | :-- |
-| 2019 | Async-await MVP |
+| 2019 | Async fns |
 
 --
-| 2023 | Async fn in traits, TAIT |
-| 2024 | Async closures |
+| 2023 | Async fn in traits |
 
-
-
----
-
-# Async Rust roadmap
-
-| Year | Language | Ecosystem |
-| ---  | :-- | :-- |
-| 2019 | Async-await MVP |  |
-| 2019-2023 | | core runtimes, rudiments |
-| 2023 | Async fn in traits | 
-| 2024 | Async closures | 
+--
+| 2024 | Async closures, generators... |
 
 ---
 
 # Where I hope we get to¹
 
-* Standard interop traits -- mix and match libraries
-* Standard structured concurrency 
+* Standard way to write async Rust that...
+    * lets you gracefully handle cancellation and streams
+    * supports a rich, interopable ecosystem of middleware, logging, etc
+    * works everywhere, from embedded to servers²
+    * is easy to learn, well documented, and free of footguns
 
-.footnote[¹ Speaking for myself here, not a consensus opinion.]
+.footnote[¹ Speaking for myself here, not a consensus opinion.<br>² To the extent possible.]
 
 ---
 
@@ -1370,7 +1362,7 @@ as diesel::query_builder::IntoUpdateTarget>rustc(E0277)
 
 ---
 
-# Idea: what if crates could control their own?
+# Idea: what if crates could control errors?
 
 * `#[diagnostic::on_unimplemented]` -- custom trait error messages
     * Coming May 2nd in Rust 1.78.0!
@@ -1453,15 +1445,7 @@ Diagnostics?
 
 --
 
-.abspos.left50.top300.bgactive.padding20[
-    Type info
-]
-
-.abspos.left200.top270.huge[⇗]
-
---
-
-.abspos.left400.top270.bracket.red[}]
+.abspos.left400.top330.bracket.red[}]
 
 .abspos.left500.top300.red.huge[
     Stable MIR! (sort of)
@@ -1502,92 +1486,210 @@ template: values-support
 ---
 template: values-support
 
-.abspos.left550.top125.fontsize800.red[⤸]
+.abspos.left180.top150.fontsize650.red[⤸]
 
 *Reliable* supports *Accessible*
 
 ---
 template: values-support
 
-.abspos.left540.top170.fontsize650.rot180.red[⤹]
+.abspos.left400.top160.fontsize600.rot180.red[⤹]
 
 *Extensible* supports *Reliable*
 
 ---
 template: values-support
 
-.abspos.left500.top305.fontsize200.red[}]
+.abspos.left540.top240.fontsize300.bracket2.red[}]
 
-.abspos.left550.top170.fontsize500.red[}]
+.abspos.left520.top300.fontsize250.red[⤴ ]
 
-.abspos.left550.top260.fontsize350.rot270.red[⤿]
-
-...but *Accessible* and *Extensible* supports **everything**.
+...but *Accessible* supports **everything**.
 
 ---
  
-# Rich procedural macros
+# The open source positive feedback cycle
+
+.abspos.left325.top200[Design improves]
+
+--
+
+.abspos.left600.top180.fontsize300.red[⤵]
+.abspos.left600.top300[Users come]
+
+--
+
+.abspos.left600.top370.fontsize300.rot90.red[⤵]
+.abspos.left350.top400.center[Users make<br>suggestions]
+
+--
+
+.abspos.left150.top370.fontsize300.rot180.red[⤵]
+.abspos.left100.top300.center[Users make<br>improvements]
+
+--
+
+.abspos.left150.top180.fontsize300.rot270.red[⤵]
+
+???
 
 
 
+---
+ 
+# The open source positive feedback cycle
 
-How many people here love Rust error messages?
+But for this to work...
 
-.footnote[
-    Shout-out to Esteban Kueber, in the audience!
+.center[
+## Users make improvements
 ]
----
 
-# I want to focus on these
+<br>
+...has to be true.
 
-| | What makes Rust *Rust*? | |
-| :-- | :-- | :-- |
-| ⚙️ | ~~Reliable~~ | ✅ |
-| 🏎️ | ~~Performant~~ | ✅ |
-| 🔍 | ~~Transparent and Tunable~~ | ✅ |
-| .mark[🔧] | .mark[**Extensible and Productive**] | 👈🏽 |
-| 🤸🏾 | Accessible |  ⬅️ |
+???
+
+
 
 ---
+ 
+# Open source burnout is a thing
 
-# Proc macros, custom derive are so cool
+.center[.p50[![Burnout guide](./images/balance-for-open-source.png)]]
 
----
+.footnote[[Read more.](https://opensource.guide/maintaining-balance-for-open-source-maintainers/)]
 
-# But also so limited
+???
 
----
-
-# Custom diagnostics
+Open source burnout has become a bigger and bigger topic of conversation.
 
 ---
 
-# Custom lints
+# Rust is no exception
+
+.center[.p90[![Sustainability](./images/Sustainability-Blog.png)]]
+
+.footnote[[Read it here.](https://smallcultfollowing.com/babysteps/blog/2019/01/07/rust-in-2019-focus-on-sustainability/)]
+
+???
+
+For Rust too. 
 
 ---
+name: nikohistory
 
-# Custom refactorings??
+# Key moments in Niko history
+
+* 197X: Born 
+--
+.abspos.left350.top300.fontsize1000[🧑‍🍼]
+---
+template: nikohistory
+name: nikohistory2
+* 198X: Played a LOT of Pool of Radiance on my 8086 IBM PC.
+---
+template: nikohistory2
+.center[.p80[![wing commander launch](images/o-nikos.jpg)]]
+---
+template: nikohistory2
+name: nikohistory3
+* 199X: Played a LOT of Wing Commander.
+--
+.center[.p80[![wing commander launch](images/wing-commander-launch.png)]]
+---
+template: nikohistory3
+name: nikohistory4
+* 2001: Graduated from MIT
+--
+.center[.p30[![MIT Yearbook image](images/mit-yearbook.jpg)]]
+---
+template: nikohistory4
+name: nikohistory5
+* 2004: Got married
+--
+¹
+.abspos.left350.top450.fontsize800[💍]
+.footnote[¹ BEST DECISION EVER]
+---
+template: nikohistory5
+name: nikohistory6
+* 2011: My daughter is born 🎉
+--
+.abspos.left350.top450.fontsize800[🚼]
+---
+template: nikohistory6
+name: nikohistory7
+* 2011: Started working at Mozilla on Rust
+--
+.abspos.left600.top200.width250[![moz research dino](images/open-poster.jpg)]
+---
+template: nikohistory7
+name: nikohistory8
+* 2013: Moved from California to Boston
+--
+¹
+.abspos.left600.top450.fontsize1000[🌨️]
+.footnote[¹ NOT ENOUGH SNOW]
+---
+template: nikohistory8
+name: nikohistory9
+* 2015: Rust 1.0
+--
+.abspos.left600.top450.fontsize1000[😅]
+---
+template: nikohistory9
+name: nikohistory10
+* 2021: Joined Amazon
+--
+.abspos.left600.top450.fontsize1000[📦]
+
 
 ---
+ 
+# How I imagined myself at Mozilla
 
-# I want to focus on these
-
-| | What makes Rust *Rust*? | |
-| :-- | :-- | :-- |
-| ⚙️ | ~~Reliable~~ | ✅ |
-| 🏎️ | ~~Performant~~ | ✅ |
-| 🔍 | ~~Transparent and Tunable~~ | ✅ |
-| 🔧 | ~~Extensible and Productive~~ | ✅ |
-| .mark[🤸🏾] | .mark[**Accessible**] | 👈🏽 |
+.center[.p60[![Hippe Niko](./images/hippie-niko.png)]]
 
 ---
+ 
+# How I imagined "corporate jobs" and "big tech"
 
-# Accessible
-
-Not the language.
-
-Always room to do more.
+.center[.p60[![Hippe Niko](./images/suit-dude.png)]]
 
 ---
+ 
+# What have I found?
 
-# Accessible
+.center[.p90[![Sustainability](./images/Sustainability-Blog.png)]]
+
+.footnote[[Read it here.](https://smallcultfollowing.com/babysteps/blog/2019/01/07/rust-in-2019-focus-on-sustainability/)]
+
+???
+
+Rust was at a turning point.
+
+I could see that big companies were getting involved.
+
+It was clear that Rust was going to from a time of scarcity
+
+Somewhat hubroustically, I wanted to be sure it was "done right"
+
+---
+ 
+# Things I've learned
+
+* **Open source helps those who help themselves**
+
+--
+* **Open source is a force multiplier**
+
+
+---
+ 
+# What did I find
+
+* Passionate Rust users
+* Lots of interesting ideas
+
+
