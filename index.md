@@ -194,7 +194,11 @@ template: rust-rusty2
 
 ???
 
-Number two is *performant and composable abstractions*. This is that sense that, once you've finished the "rough draft" of your code, it's going to perform pretty good, even if you still have to tune it. It's also this idea that you shouldn't have to stop using high-level, idiomatic abstractions to get good performance. Composable meanwhile is the idea that you should be able to take small things and put them together to build more complex, surprising things.
+Number two is *performant and composable abstractions*. This is that sense that, once you've finished the "rough draft" of your code, it's going to perform pretty good, even if you still have to tune it. 
+
+It's also this idea that you shouldn't have to stop using high-level, idiomatic abstractions to get good performance. 
+
+Composable meanwhile is the idea that you should be able to take small things and put them together to build more complex, surprising things.
 
 ---
 name: rust-rusty3
@@ -203,6 +207,9 @@ template: rust-rusty2
 .abspos.top260.left515[¹]
 
 .footnote[¹ Hopefully you caught Andre Bogus's talk yesterday on Easy Mode Rust! (Also, thanks Andre for *This Week in Rust*!)]
+
+---
+template: rust-rusty3
 
 ???
 
@@ -250,7 +257,7 @@ So, let's look at a case study of one beloved part of Rust's design that I think
 
 ???
 
-To better understand the value prop, we're going to tell a story, and it starts with Barbara. She's a Rust programmer. She's also a drawing that my daughter made some years back.
+To better understand the value prop, we're going to tell a story, and it starts with Barbara. She's a Rust programmer. She's also a drawing that my daughter made some years back and that I kind of love to death.
 
 ---
 name: thumbnails
