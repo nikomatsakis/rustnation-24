@@ -167,6 +167,12 @@ But as long as we persist in growing changing and innovating, we are going to be
 .small[**NB:** Good example of where I'm speaking for myself here:<br>
     These are not "official" values of Rust, though I think they (or something like them) should be.]
 
+--
+
+.abspos.top260.left515[¹]
+
+.footnote[¹ Check out Andres's talk on Easy Mode Rust! (Also thanks Andres for *This Week in Rust*!)]
+
 ---
 
 # Iterators: performant, composable abstractions
@@ -719,13 +725,13 @@ Welp, now I know!
 
 ---
 
-# Just a story...?
+# Hack without fear
 
---
-
-.center[
-.p60[![2 spideys meme with Niko](./images/meme.png)]
-]
+> We had a lot of ideas to improve performance, but we were hesitant to introduce them into critical systems given the risk of subtle bugs.<br><br>
+>
+> With Rust, we achieved up to double-digit percentage performance improvements. Rust’s type system provides a structure which we used to safely optimize our code.<br><br>
+>
+> — Seth Markle, Senior Principal Engineer, S3
 
 ---
 
@@ -1660,7 +1666,7 @@ To start with, no matter what you do, the pool of users for your project will al
 * Open source teams at many companies
 * Rust Foundation (grants, yes, but much more too)
 
---- 
+---
  
 # Where I hope we get to¹
 
