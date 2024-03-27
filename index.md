@@ -15,10 +15,7 @@ count: false
 
 ???
 
-So, yeah, who am I? 
-
-I am I believe the longest surviving member of the Rust team, having been continuously involved since 2011.
-Though there are some other folks here today -- hi Eric! -- who were around at that time, but who left in the middle.
+So, yeah, who am I? I've been involved in Rust a long time, and along the way, I've accumulated a great many hats. Not literal hats, but different roles that I play.
 
 ---
 
@@ -28,7 +25,7 @@ Though there are some other folks here today -- hi Eric! -- who were around at t
 
 ???
 
-I've been involved in the design of the language for a long time, and I currently co-lead the language design team, along with Tyler Mandry (also here today!).
+To start, I work on the design of the language itself. I'm co-lead of the Rust language design team, along with Tyler Mandry -- here in the audience!. Together with the rest of the lang team like Josh Triplett (here in the audience!) we decide what features we are going to add to Rust and which we will not.
 
 ---
 
@@ -36,11 +33,9 @@ I've been involved in the design of the language for a long time, and I currentl
 
 ???
 
-Amazon is adopting Rust for many purposes
+I'm also a Senior Principal Engineer at Amazon. In that capacity I get to work with the teams using Rust at Amazon -- and there are a lot! How many of you build something that uses S3? Yeah, you're using Rust.
 
-I lead Amazon's efforts to invest in Rust and support the Rust language.
-
-I'll talk more about this.
+The great thing about this role is that I get to go and talk very deeply to those Rust teams, learn what's working, what's not, and then bring that back to the Rust community, where it gets combined with what other users are experiencing, and used to make Rust better for everyone.
 
 ---
 
@@ -48,28 +43,25 @@ I'll talk more about this.
 
 ![Babysteps](./images/babysteps.png)
 
+.footnote[https://smallcultfollowing.com/babysteps]
+
+???
+
+I also maintain a blog. I have for a long time, I love it. I say I'm bursty because sometimes I write 3 posts in a day, other times, like recently, it can be months. It just depends on what I've got going on.
+
 ---
 
 # What hat am I wearing today?
 
-All of them.
-
 None of them.
+
+All of them.
 
 ???
 
-I'm here giving you my personal opinion.
-I won't tell you that I wear no hats.
-I don't believe a person can truly take off a hat.
-I don't believe you would want them to.
-I'm influenced by what Amazon needs.
-I'm influenced by what people at Mozilla needed.
-And I'm influenced most of all by what I see that *Rust* needs.
-I'll talk more about this as I go.
+So what hat am I wearing today? In one sense, none of them. I'm hearing giving you my personal opinion. I'm going to tell you things that I believe but which don't represent team consensus and certainly not Amazon's opinion.
 
-What I do want to be clear on, though, is that I'm going to talk about some proposals and design directions. For the most part these represent my desires and not the consensus of the Rust language design team. 
-
-I'll be clear about it.
+On the other hand, all those roles inform that opinion, and I don't really believe you can fully "take off" a hat like that.
 
 ---
 
@@ -80,6 +72,9 @@ What I see...
 * GREAT OPPORTUNITY
 * GREAT RISK
 
+???
+
+So, where are we at? It's 2024, Rust is being used more and more, and clearly there's a *ton* of opportunity for it to grow. But that's because I'm kind of a pessimist, and I always believe that I'm going to wake up tommorrow to find that people don't like Rust, not really.
 
 ---
 
@@ -92,12 +87,7 @@ What I see...
 
 ???
 
-- Cut to the chase
-    - What do I see for Rust?
-        - I see *opportunity*
-        - I also see *risk*
-        - **Stability without stagnation** has never been more important
-        - I'm here to talk about what I see working great, and what I see as big priorities to improve
+More realistically, there's *some* risk -- primarily, the risk I see is that we will get complacent. I mean, Rust is great, but it can be so much better!
 
 ---
 
@@ -105,13 +95,17 @@ What I see...
 
 ### Empowering everyone to build reliable, efficient, and maintainable software
 
+???
+
+So what do we want Rust to be? Well, this is our north star -- we want Rust to empower *everyone*. That word does a lot of work, we want Rust to make building software more accessible to more people. We want it to empower them to build reliable, efficient, and -- above all -- maintainable software.
+
 --
 
 *Design for the long term*
 
 ???
 
-As always, Rust's north star remains empowerment 
+You heard it in Lars' keynote yesterday. A key part of Rust's value prop is that it helps you to build software that lasts a long time. I mean I want you to be able to write Rust programs that will still be running after you and your children are dead. Ok, that's kind of morbid. Anyway, you get the idea.
 
 ---
 
@@ -119,9 +113,14 @@ As always, Rust's north star remains empowerment
 
 ### RELIABILITY?
 
+???
+
+So what is Rust's most important value? Is it reliability? Performance? Productivity? Actually, I think it's none of these things. They're important, but they're not the *most* important value.
+
 --
 
 ### PERFORMANCE?
+
 
 --
 
@@ -135,14 +134,11 @@ As always, Rust's north star remains empowerment
 
 ???
 
-These days I tend to think of *Stability without stagnation* as our ur-value.
-Rust can never be perfect. 
-We'll never get everything right the first time.
-But as long as we persist in growing changing and innovating, we are going to be ok.
+I would say *that* honor goes to *Stability without stagnation*. Nobody ever gets everything right on the first try, and Rust is no exception. I mean, we try pretty hard, and I think we get pretty close, but there's always room for improvement. So we try hard to continue iterating, learning from our experiences, and making Rust better -- but we try to do that *without* disrupting that Rust software that has to work and keep working over the long term.
 
 ---
 
-# Rust 2024 is coming!
+# Rust 2024 Edition is coming!
 
 "Breaking changes where no code breaks..."
 
@@ -150,9 +146,17 @@ But as long as we persist in growing changing and innovating, we are going to be
     [There's a song about that...](https://www.youtube.com/watch?v=q0aNduqb2Ro)
 ]
 
+???
+
+One of the coolest tools we have for that is the Rust edition. The Rust Edition lets us make tweaks and changes that affect how the language works but without breaking existing crates. Usually these changes are small and you barely even notice. A key part of this is that it only affects new code or code that opts in -- old code keeps working and building like it always did, and we always support interoperability between old and new editions. So everything keeps going.
+
 ---
 
 # What makes Rust *Rust*?
+
+???
+
+Lately I've gotten kind of obsessed with figuring out what makes Rust *Rust*. I've found that being able to put words to the "ineffable qualities" that we are shooting for when we design can help us to achieve them more reliably.
 
 --
 
@@ -167,11 +171,29 @@ But as long as we persist in growing changing and innovating, we are going to be
 .small[**NB:** Good example of where I'm speaking for myself here:<br>
     These are not "official" values of Rust, though I think they (or something like them) should be.]
 
+???
+
+This is my latest take on Rust's core goals. There are 5 of them, and they are in order, starting with the most important. Let's go through with them.
+
+So, number one is reliability -- we saw it in Lars's talk. Rust's "secret weapon" and most appealing quality is not really performance, it's the feeling that "if your code compiles, it works". And it makes sense. People could always get performance from C, but they couldn't get reliability.
+
+Number two is *performant and composable abstractions*. This is that sense that, once you've finished the "rough draft" of your code, it's going to perform pretty good, even if you still have to tune it. It's also this idea that you shouldn't have to stop using high-level, idiomatic abstractions to get good performance. Composable meanwhile is the idea that you should be able to take small things and put them together to build more complex, surprising things.
+
+The next one is *low-level control*. Look, Rust is for building systems software, and sometimes you've just got to get down to the bits. If you want to control the memory layout of your struct, or count every memory allocation, we want you to be able to do that. 
+
 --
 
 .abspos.top260.left515[¹]
 
 .footnote[¹ Check out Andres's talk on Easy Mode Rust! (Also thanks Andres for *This Week in Rust*!)]
+
+???
+
+One thing I've noticed is that sometimes, though, people get a bit too obsessed with that. I think you'll find that the more experienced the Rust developer, the fewer lifetimes, references, and advanced features they wind up using. Check out Andres's talk on Easy Mode Rust to learn more about that.
+
+So what about extensible? Look, some langauges try to package up everything you need. Rust is not that language. We try to be minimal, but to deliver the tools that people can use to build libraries and crates that can do everything. This lets us scale better and we get a lot of power from it.
+
+Finally, accessibility. I'll be honest, I wish this could be "easy", but I don't think Rust is always easy -- nor can it be, because building reliable, maintainable systems is not easy. But we do always try to be *supportive*, to help you achieve your goals.
 
 ---
 
@@ -185,6 +207,10 @@ But as long as we persist in growing changing and innovating, we are going to be
 | 🌟 | Extensible and productive | |
 | 🤸🏾 | Accessible and supportive | |
 
+???
+
+So, let's look at a case study of one beloved part of Rust's design that I think exemplifies these values pretty well. If you've ever written any Rust, you've probably worked with **iterators**.
+
 ---
 
 # Let's tell a story
@@ -197,7 +223,7 @@ But as long as we persist in growing changing and innovating, we are going to be
 
 ???
 
-This is Barbara. She's a Rust programmer.
+To better understand the value prop, we're going to tell a story, and it starts with Barbara. She's a Rust programmer. She's also a drawing that my daughter made some years back.
 
 ---
 name: thumbnails
@@ -301,6 +327,12 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 }
 ```
 
+???
+
+So this is the code that Barbara actually writes. You can also see how iterators are *composable*. You start with a simple iterator but you can build it up to express more complex ideas.
+
+Now, in truth, you could write code much like this in just about any language. What makes Rust special is a trick that we learned from C++, a trick called *zero-cost abstractions*. The idea is that high-level abstractions like iterator can be written in a way that they are *guaranteed* to compile down to really efficient code -- well, so long as you enabled compiler optimizations. Don't forget to run with `--release`! Very important.
+
 ---
 
 template: make-thumbnails-at-top
@@ -319,17 +351,29 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 }
 ```
 
+???
+
+Anyway, once the compiler is done with your code, it's going to look something like this, which is pretty much what you'd have done if you wrote it by hand. In fact, it's going to have a few optimizations that you maybe would have overlooked.
+
 ---
 
 template: with-translated-code
 
 .arrow.abspos.left430.top300.rotSW[![Arrow](./images/Arrow.png)]
 
+???
+
+For example, when we create the new array, we know how big it should be, so we can allocate it to just the right size.
+
 ---
 
 template: with-translated-code
 
 .arrow.abspos.left340.top420.rotNW[![Arrow](./images/Arrow.png)]
+
+???
+
+And when you access an element from an array, that normally requires bounds checks, but since iterators don't expose this index, it can't be out of bounds, so we can use unsafe code to skip that....
 
 ---
 
@@ -357,6 +401,10 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 
 .arrow.abspos.left500.top420.rotNW[![Arrow](./images/Arrow.png)]
 
+???
+
+So you get something like this.
+
 --
 
 .abspos.left650.top450.fliplr[![Barbara](./images/Barbara.png)]
@@ -365,6 +413,10 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 .speech-bubble.barbara.right[
 Which would *you* rather write?
 ]]
+
+???
+
+In some other languages *who we shall not name*, you find that using high-level, nice features like this comes with a kind of *abstraction tax*. You can use them, but for the most efficient parts of the code, you have to rewrite it to work in this low-level way. With Rust, when things work right, this is not necessary.
 
 ---
 
@@ -378,6 +430,10 @@ Which would *you* rather write?
 | .mark[🌟] | .mark[Extensible and productive] | |
 | 🤸🏾 | Accessible and supportive | |
 
+???
+
+So what about extensibility? One cool thing about iterators is that they are really *just* a library. They don't make use of anything that you, as a crate author, don't also have access to. That means that people can build things like iterators and put them in the public ecosystem.
+
 ---
 
 template: thumbnails
@@ -387,6 +443,10 @@ template: thumbnails
 *Oh hey, I could run these in parallel!*
 ]]
 
+???
+
+Here is one example. Imagine Barbara is looking at this code and she realizes, hey, we could create all these thumbnails in parallel, and things would run faster!
+
 ---
 
 ![Rayon](./images/Rayon.png)
@@ -394,6 +454,10 @@ template: thumbnails
 .footnote[
     (I am a co-maintainer, though really Josh Stone does the lion's share of the work)
 ]
+
+???
+
+To do this, she goes to crates.io, where she finds a crate Rayon. In fairness, I started Rayon, but these days it's maintained by Josh Stone -- love ya Josh! Anyway, she decides to give it a try.
 
 ---
 name: thumbnailspar
@@ -413,6 +477,7 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 
 .line3[![Arrow](./images/Arrow.png)]
 
+
 ---
 template: thumbnailspar
 
@@ -420,6 +485,10 @@ template: thumbnailspar
 .speech-bubble.left.barbara[
 *Rayon makes this so easy!*
 ]]
+
+???
+
+With Rayon, all she has to do is change one line -- `iter` becomes `par_iter` -- and voila, she has parallel execution. Neat!
 
 ---
 
@@ -432,6 +501,10 @@ template: thumbnailspar
 | 🔧 | Low-level control and transparency | |
 | 🌟 | Extensible and productive | |
 | 🤸🏾 | Accessible and supportive | |
+
+???
+
+OK, so iterators are performant, they're extensible, but how do they demonstrate *reliability*?
 
 ---
 name: meetalan
@@ -452,7 +525,7 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 
 ???
 
-So some time later, Barbara has an intern Alan.
+Well, some time later, Barbara has an intern Alan.
 
 ---
 template: meetalan
@@ -461,6 +534,10 @@ template: meetalan
 .speech-bubble.left.barbara[
 Your job is to<br>add telemetry
 ]]
+
+???
+
+She tells Alan that his job is to add telemetry to their app, measuring how many thumbnails they create.
 
 --
 
@@ -471,8 +548,7 @@ OK!
 
 ???
 
-Alan's job is to add telemetry to this product.
-In particular, they want to count how many thumbnails they made.
+"No problem", he says!
 
 ---
 name: thumbnailsbug
@@ -498,9 +574,7 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 
 ???
 
-So some time later, Barbara has an intern Alan.
-Alan's job is to add telemetry to this product.
-In particular, they want to count how many thumbnails they made.
+So Alan gets to work. He's not terribly experienced.
 
 ---
 template: thumbnailsbug
@@ -512,6 +586,10 @@ template: thumbnailsbug
 Let's see, I'll need a counter...
 ]]
 
+???
+
+He starts by adding a counter.
+
 ---
 template: thumbnailsbug
 
@@ -522,6 +600,10 @@ template: thumbnailsbug
 ...add 1 for each image...
 ]]
 
+???
+
+Adding one for each image.
+
 ---
 template: thumbnailsbug
 
@@ -531,6 +613,10 @@ template: thumbnailsbug
 .speech-bubble.right.alan[
 ...and log it for telemetry. Done!
 ]]
+
+???
+
+and finally logging the result to telemetry. Looks pretty good!
 
 ---
 template: thumbnailsbug
@@ -554,6 +640,12 @@ template: thumbnailsbug
 *I'm ready for lunch.*
 ]]
 
+???
+
+He opens up his PR for Barbara to review.
+She's hungry, and she's got a lot on her mind.
+
+
 --
 
 .abspos.left25.top570[
@@ -561,14 +653,28 @@ template: thumbnailsbug
 Looks great! Ship it!
 ]]
 
+???
+
+She reads it quickly and says "look pretty good! ship it!" So that code goes into production.
+
 --
 
 .line6[![Arrow](./images/Arrow.png)]
+
+???
+
+But wait! There's a bug! You see, when you have a `+= 1` like this, it can't actually be used from multiple threads. To see why, think about how a computer adds a number. It first has to read from memory, then it adds one, then it writes the reuslt back. So if you have two parallel threads, and they are both running at the same time, they can both go and read the same value, say 0, add 1 to to it, yielding 1, and then both write the same result back. Now you made two thumbnails, but your counter just says 1.
+
+This is the worst kind of bug because, in practice, the code is going to run. The only thing is that your telemetry result will just silently be off. Eventually you might notice, but probably not for a long time. --- oh, wait. That's not what happens. I forget! We're using Rust!
 
 ---
 .page-center[
 ![rewind](./images/rewind.gif)
 ]
+
+???
+
+Let's rewind and try that again.
 
 ---
 template: thumbnailsbug
@@ -579,6 +685,10 @@ template: thumbnailsbug
 .speech-bubble.right.alan[
 ...and log it for telemetry. Done!
 ]]
+
+???
+
+So, back when Alan has finished his PR, he goes to see if it builds and run some tests -- and wait, it won't compile!
 
 ---
 template: thumbnailsbug
@@ -596,6 +706,10 @@ Hold up there buddy!<br>
 This could cause a data race!
 ]]
 
+???
+
+Rust's type system will not permit you to modify a counter like this from two threads at once. The compiler helpfully points out there's a data race.
+
 ---
 template: thumbnailsbug
 
@@ -610,10 +724,18 @@ template: thumbnailsbug
 Gee, thanks Ferris! My hero!
 ]]
 
+???
+
+Alan is able to fix it and feels great about himself.
+
 ---
 .page-center[
 ![rewind](./images/rewind.gif)
 ]
+
+???
+
+Well, almost. I'm kind of simplifying it. Let's see what *really* happens.
 
 ---
 
@@ -631,7 +753,9 @@ template: thumbnailsbug
     captured variable in a `Fn` closure
 ]]
 
+???
 
+In reality, the compiler gives an error like this. (read in robot voice)
 
 ---
 template: thumbnailsbug
@@ -652,6 +776,10 @@ Stupid compiler.
 Help me!
 ]]
 
+???
+
+Honestly, Alan is probably fairly confused. He says "Man, Rust is hard! Barbara, help!"
+
 ---
 template: stupid-compiler
 
@@ -663,6 +791,9 @@ Ah, yeah, this.<br>
 Use `AtomicUsize`.
 ]]
 
+???
+
+Now Barbara takes a look. She's seen this before, and knows what that error means, and how to fix it.
 
 ---
 name: thumbnailsfixed
@@ -686,20 +817,14 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 
 .abspos.left500.top350[![Alan](./images/Alan.png)]
 
----
-template: thumbnailsfixed
-
 .line2[![Arrow](./images/Arrow.png)]
-
----
-template: thumbnailsfixed
-
 .line6[![Arrow](./images/Arrow.png)]
-
----
-template: thumbnailsfixed
-
 .line10[![Arrow](./images/Arrow.png)]
+
+
+???
+
+Alan rewrites his code to use `AtomicUsize`, which will ensure the counter is correct, even if multiple threads are executing.
 
 ---
 template: thumbnailsfixed
@@ -709,11 +834,21 @@ template: thumbnailsfixed
 Welp, now I know!
 ]]
 
+???
+
+This is cool! Alan learned something! Now he knows about data races, and he'll take that knowledge with him, hopefully helping avoid bugs even when using languages that are not Rust.
+
+Also, if you're a child of the 80s like me, you can't see the words "Now I know"..
+
 --
 
 .abspos.left200.top200[
 .p100[![GI Joe](./images/knowing-is-half-the-battle.gif)]
 ]
+
+???
+
+...without thinking of GI Joe. Because knowing is half the battle!
 
 ---
 
@@ -721,7 +856,11 @@ Welp, now I know!
 
 > Rust lets you hack without fear.<br>
 > <br>
-> — Felix Klock, years back
+> — Felix Klock, many years back
+
+???
+
+And *this*, I think, is Rust's true value proposition. I think this phrasing, "Hack without fear", is the best articulation I have heard. It came from Felix Klock many years ago. Basically the idea is that Rust lets you build the systems you wanted to build, but you were afraid, because you didn't know if you'd be able to maintain it.
 
 ---
 
@@ -733,15 +872,29 @@ Welp, now I know!
 >
 > — Seth Markle, Senior Principal Engineer, S3
 
+???
+
+Remember I said Rust was being used in S3? Here's a great quote from a Senior Principal Engineer in that space. He's talking about how they rewrote a library that was originally in C. What I love about this is that you would think that using Rust would not give you any performance boost over using C, but in fact, precisely because of reliability, they were able to make a bunch of improvements in the design and get big wins. Cool!
+
 ---
 
 # Let's talk about THE FUTURE
 
 ![bill&ted's council from the future](images/bill-ted-future-council.jpg)
 
+???
+
+OK, enough about iterators, let's talk about **Rust's future**.
+
 --
 
 ## `std::future::Future`, that is
+
+???
+
+And by that, I of course mean the future of Rust, but I also mean it quite literally -- async Rust's futures trait.
+
+That pun never gets old.
 
 ---
 
@@ -755,11 +908,25 @@ Welp, now I know!
 | 🌟 | Extensible and productive | |
 | 🤸🏾 | Accessible and supportive | |
 
+???
+
+So what is async Rust? It's a set of language features for building high peformance network servers, which has turned out to be a key application area for Rust.
+
 ---
 
-# Async Rust can be so very cool
+# Async Rust can be so very cool¹
 
 It's also a bit different than async/await in other languages.
+
+.footnote[
+    ¹ Shoutout to Alex Crichton, Aaron Turon, Taylor Cramer, Boats, Carl Lerche, and others who contributed to this design, sadly none of whom are here today.<br>
+]
+
+???
+
+Async Rust's design is, in my opinion, very cool.
+
+Syntactically, it looks very much like async-await in other languages, but under the hood, it works a bit differently, which turns out to make a big difference.
 
 ---
 
@@ -788,15 +955,27 @@ starts a task.
     Task A
 ]
 
+???
+
+So how do async functions in JavaScript work? Well, in JavaScript, if you've got a task, say Task A...
+
 --
 
 .abspos.left10.top230.width50[![Arrow](./images/Arrow.png)]
+
+???
+
+...and it calls an Async Function...
 
 --
 
 .abspos.left200.top350.bgactive.padding20[
     Task B
 ]
+
+???
+
+then this winds up starting another task...So now you have two tasks running.
 
 ---
 
@@ -836,6 +1015,10 @@ the other task finishes.
 
 .abspos.left10.top260.width50[![Arrow](./images/Arrow.png)]
 
+???
+
+In turn, when Task A *awaits* the future, it basically stalls until Task B completes.
+
 --
 
 .abspos.left200.top475.huge[↵] 
@@ -843,6 +1026,10 @@ the other task finishes.
 .abspos.left50.top520.bgactive.padding20[
     Task A
 ]
+
+???
+
+and then it can keep going.
 
 ---
 
@@ -865,15 +1052,27 @@ let future = process_row(row);
     a bit of **suspended code**.
 ]]
 
+???
+
+So what happens with Rust?
+
 --
 
 .abspos.left550.top400.width70.bgactive.padding10.medium[
     Task A
 ]
 
+???
+
+In Rust, when you're in a task...
+
 --
 
 .arrow.abspos.left10.top230[![Arrow](./images/Arrow.png)]
+
+???
+
+...and you invoke an async function...
 
 --
 
@@ -881,6 +1080,12 @@ let future = process_row(row);
     `process_row(row)`
 ]
 
+
+???
+
+that is just going to create an **data structure**, which we call a future.
+It's totally inert. Nothing is happening.
+This struture represents a suspended computation.
 
 ---
 
@@ -917,6 +1122,10 @@ execute the future
 
 .arrow.abspos.left10.top260[![Arrow](./images/Arrow.png)]
 
+???
+
+Now, when a task **awaits** a future...
+
 --
 
 .abspos.left550.top480.width70.bgactive.padding10.medium[
@@ -924,6 +1133,13 @@ execute the future
 ]
 
 .abspos.left630.top475.rotSW.huge[⇗] 
+
+???
+
+That task then goes and executes that future, moving the function along.
+Once the await is done, the future is again inert.
+So async functions are only executing when they are awaited, 
+they're like a kind of "lazy operation".
 
 ---
 
@@ -953,6 +1169,11 @@ spawn a task for<br>
 each each piece.<br>
 ]]
 
+???
+
+Why is this cool? It comes back to that idea of composability and zero-cost abstractions.
+Futures can be built up into bigger futures -- like here.
+
 ---
 template: compose
 
@@ -961,6 +1182,10 @@ template: compose
 ]
 
 .arrow.abspos.left10.top230[![Arrow](./images/Arrow.png)]
+
+???
+
+when we call `process_row` the first time we get one future
 
 ---
 template: compose
@@ -975,6 +1200,10 @@ template: compose
 ]
 
 .arrow.abspos.left10.top260[![Arrow](./images/Arrow.png)]
+
+???
+
+then we get a second one. Remember, at this point, both futures are inert. no code is running, these are just data structures stored on the stak, very cheap.
 
 ---
 template: compose
@@ -992,6 +1221,10 @@ template: compose
 ]
 
 .arrow.abspos.left10.top290[![Arrow](./images/Arrow.png)]
+
+???
+
+then we can build them up into a compound future. Still no code is running, but now we have a future that represents the idea of doing both calls concurently -- i.e., at the same time.
 
 ---
 
@@ -1042,6 +1275,13 @@ concurrently.
 
 .abspos.left570.top465.huge[⇒] 
 
+???
+
+when we await this combined future, our single task winds up running both futures concurrently.
+
+This is cool because spawning tasks, in general, requires allocation. It represents a runtime cost. If we made every async function eagerly spawn a task, like in JavaScript, we'd be allocating memory proportional to the number of futures that we want to run concurrently. But in Rust, we don't have to do that.
+
+
 ---
 name: scaling-up-to-streams
 
@@ -1049,15 +1289,19 @@ name: scaling-up-to-streams
 
 ```rust
 async fn batch_job(db: &Database) {
-    let work = run_query(db, FIND_WORK_QUERY).await;
-    let work_queries = stream::iter(work)
-        .map(|item| run_query(db, work_query(item)))
+    let rows = run_query(db, FIND_WORK_QUERY).await;
+    let results = stream::iter(rows)
+        .map(|row| process_row(row)))
         .buffered(5);
-    while let Some(result) = work_queries.iter().next().await {
+    while let Some(result) = results.iter().next().await {
         upload_result(result).await;
     }
 }
 ```
+
+???
+
+This in turn lets us scale up to more complex things, like streams. Here is a neat piece of code.
 
 ---
 
@@ -1065,11 +1309,19 @@ template: scaling-up-to-streams
 
 .arrow.abspos.left10.top150[![Arrow](./images/Arrow.png)]
 
+???
+
+It starts by querying a database to fetch a bunch of rows.
+
 ---
 
 template: scaling-up-to-streams
 
 .arrow.abspos.left10.top180[![Arrow](./images/Arrow.png)]
+
+???
+
+Then it creates a stream that will iterate over the rows....
 
 ---
 
@@ -1077,11 +1329,20 @@ template: scaling-up-to-streams
 
 .arrow.abspos.left10.top210[![Arrow](./images/Arrow.png)]
 
+???
+
+...processing each one in turn...
+
 ---
 
 template: scaling-up-to-streams
 
 .arrow.abspos.left10.top240[![Arrow](./images/Arrow.png)]
+
+???
+
+... and buffering them up so that you can process 5 of those rows concurrently.
+The number 5 is presumably chosen to keep concurency but keep peak memory usage down.
 
 ---
 
@@ -1089,11 +1350,16 @@ template: scaling-up-to-streams
 
 .arrow.abspos.left10.top270[![Arrow](./images/Arrow.png)]
 
+???
+
+then we can pull each of those results as they complete and upload the final result.
+
 ---
 
 template: scaling-up-to-streams
 
 .abspos.left600.top350.fliplr[![Barbara](./images/Barbara.png)]
+
 
 .abspos.left350.top400[
 .speech-bubble.barbara.right.medium[
@@ -1101,6 +1367,10 @@ Dang! It's *so* cool<br>
 to express complex<br>
 control-flow so compactly.
 ]]
+
+???
+
+Pretty neat, right? A great example of how concise Rust can be while still generating the same low-level code you would write by hand.
 
 ---
 
@@ -1114,6 +1384,10 @@ control-flow so compactly.
 | 🌟 | Extensible and productive | |
 | 🤸🏾 | Accessible and supportive | |
 
+???
+
+Another advance of not spawning tasks for every async functions is that it lets async functions be used in very low-level contexts.
+
 ---
 
 # Embassy
@@ -1121,6 +1395,10 @@ control-flow so compactly.
 > Rust's async/await allows for unprecedently easy and efficient multitasking in embedded systems. [..] **It obsoletes the need for a traditional \[Real-time operating system]** with kernel context switching, and is faster and smaller than one!
 
 from https://embassy.dev/
+
+???
+
+For example, check out the embassy runtime, which lets you write async functions to run on tiny devices that don't even have an operating system! Very cool.
 
 ---
 
@@ -1134,6 +1412,10 @@ from https://embassy.dev/
 | 🌟 | Extensible and productive | |
 | 🤸🏾 | Accessible and supportive | |
 
+???
+
+As cool as async Rust is, it also has some gaps, and these gaps worry me. The one I am most worried about has to do with reliability.
+
 ---
 
 name: bbbs
@@ -1142,11 +1424,11 @@ name: bbbs
 
 ```rust
 async fn batch_job(db: &Database) {
-    let work = run_query(db, FIND_WORK_QUERY).await;
-    let work_queries = stream::iter(work)
-        .map(|item| run_query(db, work_query(item)))
+    let rows = run_query(db, FIND_WORK_QUERY).await;
+    let results = stream::iter(rows)
+        .map(|row| process_row(row)))
         .buffered(5);
-    while let Some(result) = work_queries.iter().next().await {
+    while let Some(result) = results.iter().next().await {
         upload_result(result).await;
     }
 }
@@ -1161,6 +1443,16 @@ my connections<br>
 keep timing out?
 ]]
 
+???
+
+You see, that really cool high-level code I showed you?
+It actually has a pretty subtle bug.
+If you run it, things will mostly work fine -- except when they don't.
+Sometimes, your database connections will time out.
+This is not good!
+This kind of thing is not supposed to happen in Rust!
+What is going on?
+
 ---
 
 template: bbbs
@@ -1172,8 +1464,12 @@ template: bbbs
 ]
 
 .abspos.left300.top505.bgfuture.padding10.medium.rounded_corners[
-    `work_queries`
+    `rows`
 ]
+
+???
+
+Well, it has to do with Rust's model. You see, when you create the `rows` stream, remember, nothing happens yet.
 
 ---
 
@@ -1190,10 +1486,14 @@ template: bbbs
 ]
 
 .abspos.left300.top505.bgfuture.padding10.medium.rounded_corners[
-    `work_queries`
+    `rows`
 ]
 
 .abspos.left220.top490.huge[⇒] 
+
+???
+
+It's only here, when we *await* the next function, that stuff starts to happen. The first time, this will cause those 5 connections to start and the database query to run. The next time, it will go and keep those connections going, making progress, until the next item is done.
 
 ---
 
@@ -1214,7 +1514,7 @@ template: bbbs
 ]
 
 .abspos.left300.top505.bgfuture.padding10.medium.rounded_corners[
-    `work_queries`
+    `rows`
 ]
 
 .abspos.left300.top590.bgfuture.padding10.medium.rounded_corners[
@@ -1222,6 +1522,13 @@ template: bbbs
 ]
 
 .abspos.left220.top570.huge[⇒] 
+
+???
+
+At that point, the `rows` stream is just an inert data structure again.
+And now the task begins to execute the result uploading.
+While that is happening, `rows` is not executing, so any connections that are open to the database won't continue working.
+This can cause them to timeout.
 
 ---
 
@@ -1232,7 +1539,14 @@ With Async Rust, not as often as we'd like:
 * Nested awaits
 * Unexpected cancellation
 * Misuse of `select!`
+* Difficult cleanup because we have no async drop
 * Uninitialized or mixed executors
+
+???
+
+You can see why I'm so worried.
+These kind of errors are a clear violation of that core value propsition that Rust offers -- that if it compiles, it works.
+Over time we've found a number of patterns like this, places where the async model has rough edges.
 
 --
 
@@ -1244,6 +1558,10 @@ Want to read more?
 * Tomaka's [A look back at asynchronous Rust](https://tomaka.medium.com/a-look-back-at-asynchronous-rust-d54d63934a1c)
 
 .left[.citation[Remember, you can slides at `https://nikomatsakis.github.io/rustnation-24/` and from there you can click the links]]
+
+???
+
+I won't go into details but here are some great resources to read more, if you're interested.
 
 ---
 
@@ -1257,9 +1575,13 @@ Want to read more?
 | 2024 | Async closures, generators... |
 
 .footnote[
-    ¹ Shoutout to Alice Ryhl, go see her keynote this evening!<br>
+    ¹ Shoutout to Alice Ryhl, go see her keynote this evening! Also the Shuttle folks, who spoke yesterday, Luca Palmieri's Pavex, Zainab Ali's talk-- too many to list, really.<br>
     2 Big shoutout to Michael Goulet, Eric Holk, Tyler Mandry, other members of Async WG.<br>
 ]
+
+???
+
+Here's a brief history of async Rust. We stabilized async functions in 2019. Since then there's been a lot of great ecosystem development.
 
 ---
 
