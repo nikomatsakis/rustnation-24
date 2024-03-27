@@ -1557,8 +1557,6 @@ Want to read more?
 * Tyler Mandry's "for await" [blog post](https://tmandry.gitlab.io/blog/posts/for-await-buffered-streams/)
 * Tomaka's [A look back at asynchronous Rust](https://tomaka.medium.com/a-look-back-at-asynchronous-rust-d54d63934a1c)
 
-.left[.citation[Remember, you can slides at `https://nikomatsakis.github.io/rustnation-24/` and from there you can click the links]]
-
 ???
 
 I won't go into details but here are some great resources to read more, if you're interested.
