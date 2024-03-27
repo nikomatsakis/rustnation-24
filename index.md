@@ -41,11 +41,9 @@ The great thing about this role is that I get to go and talk very deeply to thos
 
 ---
 
-# Bursty blogger
+# Bursty [blogger](https://smallcultfollowing.com/babysteps)
 
 ![Babysteps](./images/babysteps.png)
-
-.footnote[https://smallcultfollowing.com/babysteps]
 
 ???
 
@@ -187,7 +185,7 @@ The next one is *low-level control*. Look, Rust is for building systems software
 
 .abspos.top260.left515[¹]
 
-.footnote[¹ Check out Andres's talk on Easy Mode Rust! (Also thanks Andres for *This Week in Rust*!)]
+.footnote[¹ Hopefully you caught Andre Bogus's talk yesterday on Easy Mode Rust! (Also, thanks Andre for *This Week in Rust*!)]
 
 ???
 
