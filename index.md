@@ -1579,7 +1579,9 @@ I won't go into details but here are some great resources to read more, if you'r
 
 ???
 
-Here's a brief history of async Rust. We stabilized async functions in 2019. Since then there's been a lot of great ecosystem development.
+Here's a brief history of async Rust. We stabilized async functions in 2019. Since then there's been a lot of great ecosystem development, and that's partly how we learned about some of these footguns. Recently started shipping new language features again.
+
+The good news is that I think, with our new experience as well as this new language work, we can start to address these gaps.
 
 ---
 
@@ -1593,6 +1595,13 @@ Here's a brief history of async Rust. We stabilized async functions in 2019. Sin
 
 .footnote[¹ Speaking for myself here, not a consensus opinion.<br>² To the extent possible.]
 
+???
+
+So this is where I personally would like to get to.
+I'd like to have a standard way to write async Rust that avoided the footguns I showed you.
+It should let you easily change between executors, so you can use Tokio, or Embassy, or other options, and you should still be able to grab and deploy middleware etc from crates.io whatever you choose.
+No doubt it's going to take some work to develop this, but I think we'll find a path.
+
 ---
 
 # Where else can we do better on reliability?
@@ -1605,6 +1614,10 @@ Here's a brief history of async Rust. We stabilized async functions in 2019. Sin
 | 🌟 | Extensible and productive | |
 | 🤸🏾 | Accessible and supportive | |
 
+???
+
+OK, so I showed you one threat to reliability, but what other threats are out there?
+
 ---
 
 # cve-rs
@@ -1612,6 +1625,18 @@ Here's a brief history of async Rust. We stabilized async functions in 2019. Sin
 How many of you saw [cve-rs](https://github.com/Speykious/cve-rs)?
 
 ![cvs-rs](./images/cve-rs.png)
+
+???
+
+How many of you have heard of the cve-rs project?
+
+Yeah-- so this is a project that exploits a long-standing bug in the compiler to offer "safe" Rust APIs that will crash your system and do horrible things.
+
+How many of you are worried about this?
+
+Yeah, me too. This is bad! Rust's not supposed to do that!
+
+And yet, it's not the thing that worries me the most.
 
 ---
 
@@ -1625,26 +1650,47 @@ Thank goodness for the Rust Foundation.³
     &sup3; Who employ JD Nose on Rust Infra, Tobias Biniek on crates.io, and Walter Pearce on Security. Check out Walter's talk on painter!
 ]
 
+???
+
+I think i we're talking about dire threats to Rust's reliability guarantees, in some ways, our biggest risk is the same risk we've seen from other projects -- the crates.io ecosystem. Rust leans hard on extensibility, which means we lean hard on crates, which means it's very important that this system operates securely and is free of malware.
+
+Fortunately things are doing very well here. Some years back, it was very hard. The infrastructure team was basially just Pietro -- here in the audience! -- and MArk, unfortunately not here, and the crates.io team was exclusively volunteers.
+
+But with the Rust Foundation, things are different. We have dedicated staff, and we've also got people like Walter Lewin coming up with cool, innovative projects that can help bar raise the bar with respect to security. I definitely recommend you check out Walter's talk on Painter later today, very cool stuff.
+
 ---
 
 # Delivering on our core promise, Reliability
 
 * Supply chain, infrastructure security.
 
+???
+
+OK, so we're making progess on supply chain security.
+
+What about the trait solver? Well, what about unsoundness like cve-rs? As I said, this was based on a longstanding bug, and the reason that bug has not yet been fixed is two-fold. First, it seemed unlikely to occur in the wild -- thanks cve-rs for violating that by the way -- but also because it required some serious refactoring and rearchitecting internally to the compiler to fix in the right way. I'm very pleased to say that this work took a big step forward when, after years of work, Bastian Keucher recently opened a PR to stabilize the first use of a new trait solver for Rust.
+
+The other big development is the work towards a Rust specification. Beginning with Ferrocene -- many folks in the audience today from there -- we have started to have a specification that says what Rust should do. Be sure to go see Pietro's talk to learn more about that. Thanks to Ferrocene generously open sourcing that work, we're able to use it as a starting point to build out an official Rust spec. Shout to Mara -- here today! -- and others doing that work.
+
 --
-* New trait solver¹:
-    * unblocks bug fixes
+* Unsoundness like cve-rs?
+    *  New trait solver¹ unblocks bug fixes
 --
 * Spec work:
     * Ferrocene [open-sourced](https://ferrous-systems.com/blog/ferrocene-open-source/) their [spec](https://github.com/ferrocene/specification)²
     * building on that to [create an official Rust spec](https://blog.rust-lang.org/inside-rust/2023/11/15/spec-vision.html)³
-.footnote[¹ Bastian ("lcnr") just [tackled the first major milestone here!](https://github.com/rust-lang/rust/pull/121848)<br>² Pietro has a talk about that at 11.15!
-<br>³ Shoutout to Mara, pnkfelix, Eric Huss, and Joel from the Foundation!]
+
 --
 
 * Developing Rust solvers
     * Stable MIR
     * [Kani](https://model-checking.github.io/kani-verifier-blog/2023/08/03/turbocharging-rust-code-verification.html), [Cruesot](https://github.com/creusot-rs/creusot), [Prusti](https://github.com/viperproject/prusti-dev), [Aeneas](https://github.com/AeneasVerif/aeneas)
+
+???
+
+Getting a spec in turn unlocks the last interesting development, which is being able to support rich theorem provers for Rust. These tools allow us to take code that is theoretically unsafe and prove that it cannot, in fact, cause undefined behavior -- effectivelly, prove mathematically that it is safe, even if it doesn't obey Rust's type system rules. This takes a lot more work than just writing safe Rust, but it's the ultimate guarantee.
+
+To do this, solvers need access to Rust's type system, so we're building out a set of APIs called *Stable MIR* that give access to the compiler's intenals, in turn enabling verifies like the ones you see here. Most of this work is still in a fairly experimental state but it's advancing rapidly and there's a lot of promise.
 
 ---
 
@@ -1654,9 +1700,18 @@ Thank goodness for the Rust Foundation.³
 
 .footnote[¹ Speaking for myself here, not a consensus opinion.]
 
+???
+
+So where can we get to? As of now, we have a lot of widely used crates in the ecosystem that lean heavily on unsafe. Something like Tokio, for example, would not be possible without it. But the reality is that, no matter how hard the Tokio devs work -- and they do work hard -- we've learned from C that they'll never get all the memory safety bugs.
+
 --
 
 .abspos.top580.left450.width200.height50.bgred.center[![unsafe-code](./images/unsafe-code-verified.svg)]
+
+???
+
+I'd like to see them get to the point where widely used libraries like Tokio
+are able to prove their unsafe code is correct. I don't think this will ever be practical to do for every library, but for widely used libraries, I very much think it's worth the trouble -- if we can get the tools good enough!
 
 ---
 
@@ -1670,17 +1725,31 @@ Thank goodness for the Rust Foundation.³
 | 🌟 | Extensible and productive | |
 | .mark[🤸🏾] | .mark[Accessible and supportive] | |
 
+???
+
+So let's talk about the last one, accessibility and supportiveness.
+
 ---
 
 # Rust error messages are great¹
 
 How many people here love Rust error messages?
 
-.footnote[¹ Now this IS a consensus opinion. In Esteban Küber and the Diagnostics WG we trust!]
+.footnote[¹ Now this IS a consensus opinion. In Esteban Küber, David Wood and the Diagnostics WG we trust!]
+
+???
+
+I think the most well-known example of Rust being supportive is its error meessages.  How many people here love Rust's error messages, raise your hands...
 
 --
 
 ![Mean girls](./images/mean-girls.gif)
+
+???
+
+This is how the room looks to me. It's a good thing you raised your hands because otherwise this gif would look pretty dumb. 
+
+Right now, those error messages are great because of the hard work of people like Esteban Kuber and David Wood -- both in the audience today -- improving the compiler.
 
 ---
 
@@ -1703,6 +1772,12 @@ How many people here love Rust error messages?
 .speech-bubble.right.alan[
 I...have no idea what this means.
 ]]
+
+???
+
+But we saw earlier that, despite all of that, there are still cases
+where the compiler winds up talking in jargon, telling you why the
+type system is not happy, but not what the real problem is.
 
 ---
 
@@ -1731,13 +1806,31 @@ diesel::query_builder::distinct_clause::NoDistinctClause, W>
 as diesel::query_builder::IntoUpdateTarget>rustc(E0277)
 ```
 
+???
+
+And if you think that is bad, consider things like this message,
+which I copied from a Diesel issue. This stuff happens beacuse Diesel
+is using Rust traits to model things like database schemas, and the compiler
+doesn't know *anything* about that.
+
 ---
 
-# Idea: what if crates could control errors?
+# How can we improve Rust's errors?
 
 * `#[diagnostic::on_unimplemented]` -- custom trait error messages
     * Coming May 2nd in Rust 1.78.0!
     * Shout-out to Georg Semmler, Esteban Küber, Michael Goulet, and more!
+* Local translations -- what if you don't speak English?
+    * Shout-out to David Wood and others!
+
+???
+
+So what we can do about it? We're starting to see progress, such as 
+the stabilization of the "on-unimplemented" attribute, which lets crates
+customize the errors you see when a trait is not implemented.
+
+We are also seeing efforts like error translations, helping make Rust 
+more accessible to people whose first language is not English.
 
 ---
  
@@ -1747,13 +1840,31 @@ What if crates could *control their development experience*?
 
 Diagnostics?
 
+???
+
+The current stuff is cool, but how far can we push it? 
+
+How much can we let crates customize diagnostics?
+
 --
 
 .large[Lints??]
 
+???
+
+What if they could specify custom lints, so that they can catch common 
+errors from using their API?
+
 --
 
 .huge[IDE refactorings???]
+
+???
+
+Or what if they could extend the refactorings you see in the API with 
+things specific to the crate? 
+
+That'd be really cool, right?
 
 ---
  
@@ -1776,6 +1887,15 @@ Diagnostics?
     Tokens
 ]
 
+???
+
+If we could do all that, Rust would be an even better platform for
+translating the details of your domain into code. I think we can do that,
+and partly because we've seen how much mileage we get from procedural
+macros and custom derives. These are the compiler extensions we have today,
+and they basically work by taking in tokens or text and emitting text.
+Very simple, but they can do so much.
+
 ---
  
 # *Supercharged* procedural macros
@@ -1797,6 +1917,10 @@ Diagnostics?
     Tokens
 ]
 
+???
+
+What if they could access more than just tokens and text?
+
 --
 
 .abspos.left50.top300.bgactive.padding20[
@@ -1804,6 +1928,10 @@ Diagnostics?
 ]
 
 .abspos.left200.top270.huge[⇗]
+
+???
+
+What if they could read type info?
 
 --
 
@@ -1814,6 +1942,11 @@ Diagnostics?
 
 .abspos.left220.top350.huge[⇗]
 
+???
+
+And all that other stuff the compiler knows?
+That'd be super cool, right?
+
 --
 
 .abspos.left400.top330.bracket.red[}]
@@ -1822,17 +1955,30 @@ Diagnostics?
     Stable MIR! (sort of)
 ]
 
+???
+
+If this sounds familiar, it's because it's basically the same
+information that solvers need to use to prove unsafe code is sound.
+So I believe we can leverage and improve those investments to let us
+build supercharged macros that will give us a ton of expressive power.
+
 ---
  
 # Where I hope we get to¹
 
-* Compiler provides reflective APIs ("stable MIR")
-* Used to let crates build rich developer experiences
+* Crates can build rich developer experiences
     * Procedural macros, custom derives
     * Lints, static verifiers, theorem provers
     * Improved diagnostics
 
 .footnote[¹ Speaking for myself here, not a consensus opinion.]
+
+???
+
+So this is where I would like us to get to. 
+Crates should be able to build rich developer experiences,
+going beyond what is possible today to support richer macros,
+diagnostics, lints, and the whole range of things.
 
 ---
 name: values-support
@@ -1847,12 +1993,23 @@ name: values-support
 | 🌟 | Extensible and productive | |
 | 🤸🏾 | Accessible and supportive | |
 
+???
+
+OK, we're coming on the end of the talk, but I want to close with 
+a bit of reflection on the way that we've seen Rust's values support each other.
+
 ---
 template: values-support
 
 *Extensible* supports *Accessible*
 
 .abspos.left400.top280.huge.red[⤸]
+
+???
+
+For example, we saw that extensibility supports accessibility,
+because empowering crate authors with things like procedural macros
+or custom diagnostics improves the user experience.
 
 ---
 template: values-support
@@ -1861,12 +2018,11 @@ template: values-support
 
 *Reliable* supports *Accessible*
 
----
-template: values-support
+???
 
-.abspos.left400.top160.fontsize600.rot180.red[⤹]
-
-*Extensible* supports *Reliable*
+For that matter, reliability makes Rust accessible, because -- trust me --
+there is nothing LESS accessible than debugging a data race or a memory
+safety bug.
 
 ---
 template: values-support
@@ -1877,26 +2033,52 @@ template: values-support
 
 ...but *Accessible* supports **everything**.
 
+???
+
+But what about Accessibility? What does it support?
+
+Well, I think it supports EVERYTHING ELSE.
+
+And that's because Rust is open source.
+
+Let me explain.
+
 ---
  
 # The open source positive feedback cycle
 
 .abspos.left325.top200[Design improves]
 
+???
+
+When you've got a solid open source project...
+
 --
 
 .abspos.left600.top180.fontsize300.red[⤵]
 .abspos.left600.top300[Users come]
+
+???
+
+...and people notice it and start using it...
 
 --
 
 .abspos.left600.top370.fontsize300.rot90.red[⤵]
 .abspos.left350.top400.center[Users make<br>suggestions]
 
+???
+
+...they start having ideas how it could be better...
+
 --
 
 .abspos.left150.top370.fontsize300.rot180.red[⤵]
 .abspos.left100.top300.center[Users make<br>improvements]
+
+???
+
+...and then, some subset of them start to implement those ideas...
 
 --
 
@@ -1904,26 +2086,8 @@ template: values-support
 
 ???
 
-
-
----
- 
-# The open source positive feedback cycle
-
-But for this to work...
-
-.center[
-## Users make improvements
-]
-
-<br>
-...has to be true.
-
-???
-
-The assumption here is that as you get more users, some portion of them will naturally come and make improvements.
-
-But that's not a given. In fact, I'd say it's not even necessarily **common**.
+at which point the whole cycle begins again, reinforcing itself.
+Neat.
 
 ---
  
@@ -1935,9 +2099,11 @@ But that's not a given. In fact, I'd say it's not even necessarily **common**.
 
 ???
 
-Open source burnout has become a bigger and bigger topic of conversation these days, which I think is good.
-
-Github even has published this interesting guide!
+Of course, the reality can be a bit more complicated.
+Lately there's been a lot of talk about burnout in open source
+and I can assure you it is a real thing.
+This is true in Rust, just like every other open source project,
+and it's something I really want to see us improve.
 
 ---
  
@@ -1951,9 +2117,9 @@ Contributors
 
 ???
 
-Part of the problem is a rather natural thing. 
-
-To start with, no matter what you do, the pool of users for your project will always be larger -- sometimes
+A big part of the problem is that the story doesn't really end 
+with contributors. In the story as I told it, people have ideas, and some 
+smaller set of people then go and open PRs to implement those ideas...
 
 --
 
@@ -1961,11 +2127,31 @@ To start with, no matter what you do, the pool of users for your project will al
 
 **Maintainers**
 
+???
+
+...but I left out the *even smaller* set who have to review those PRs.
+This is the set that winds up carrying the most load -- as well as guilt.
+Other people are volunteering their time to write code for your project, 
+and you might not even be able to offer them a timely review? 
+Doesn't feel great.
+
 ---
  
 # So you want to be a maintainer?
 
 * Review PRs.
+
+???
+
+So how can you help?
+Well, part of it is, don't just contribute code, but stick around,
+review PRs. 
+
+You don't have to be "approved" to do it, you can do a "pre-review", 
+just help to highlight potential problems and make suggestions.
+
+Eventually you may find your pre-reviews are reliably finding all the issues
+in the project.
 
 --
 * Label and categorize ("triage") incoming issues!
@@ -1973,18 +2159,42 @@ To start with, no matter what you do, the pool of users for your project will al
 * Take notes!
 * Build bots like rfcbot!
 * "Program management" like running the Rust 2024 edition!²
+* Moderation!³
 
 .footnote[
     ¹ Thanks TC, you're the best! 💜<br>
-    ² Three cheeers for Mara, Eric Huss, and Bstrie: you're ALSO the best! 💜
+    ² Three cheeers for Mara, Eric Huss, and Bstrie: you're ALSO the best! 💜<br>
+    ³ We **desperately** need more moderators. The team is currently just two, Josh Gould -- here today! -- and Oli Scherer.
 ]
+
+???
+
+But it doesn't stop there. In fact, there's a ton of invisible "glue work"
+that goes into making a projection function. Helping to share this load
+has such a large impact -- much more impact, ironically, than writing code.
+
+One area I particularly want to call out is moderation. Josh Gould, one of only
+two moderators, is here today. Say thank you and ask them about this important,
+but often thankless, work.
 
 ---
 
 # So many new and great tools
 
 * Open source teams at many companies
-* Rust Foundation (grants, yes, but much more too)
+* Rust Foundation (cloud desktops for contributors, grants, fellowships, and more)
+
+???
+
+I think we can do a lot more to build a healthy, sustainable community.
+Thankfully, we've got a bunch of great new tools.
+Over the last few years, for example, the Rust compiler maintainers
+have quietly gone from being mostly volunteers to having an awful lot of
+people being paid to work on the compiler.
+
+And the Rust Foundation has been experimenting with the project on new 
+and interesting ideas, such as having member companies 
+offering people fast cloud desktops.
 
 ---
  
@@ -2002,6 +2212,13 @@ To start with, no matter what you do, the pool of users for your project will al
     ² Hat tip to Doc Jones, who really helped me see the importance of this.
 ]
 
+???
+
+So what should we be shooting for? I'd like to see us having a rich, diverse
+set of contributors, some of whom are making a career of it, and others doing
+it on the side. I want us to have well documented onboarding paths and an
+inclusive community where everybody feels welcome.
+
 ---
 
 # One last shout-out
@@ -2011,7 +2228,7 @@ To start with, no matter what you do, the pool of users for your project will al
 
 ???
 
-I want to closue out with one last shout-out.
+I want to close out with one last shout-out.
 I've made a point to highlight people who are active in the Rust org,
 especially the ones who are here today. I'm sure I missed a lot of you.
 But I want to make sure we recognize the great people who assembled
@@ -2025,3 +2242,8 @@ Thanks Ernest and the rest of you!
 ![bill&ted's council from the future](images/bill-ted-future-council.jpg)
 
 .center["Be excellent to each other."]
+
+???
+
+So yes, thanks for bearing with me, even if I'm a few minutes over time,
+and please, come up and say hi, I'd love to talk to you!
