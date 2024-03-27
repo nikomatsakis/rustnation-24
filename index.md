@@ -147,7 +147,7 @@ But as long as we persist in growing changing and innovating, we are going to be
 "Breaking changes where no code breaks..."
 
 .footnote[
-    [Watch the video.](https://www.youtube.com/watch?v=q0aNduqb2Ro)
+    [There's a song about that...](https://www.youtube.com/watch?v=q0aNduqb2Ro)
 ]
 
 ---
