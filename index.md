@@ -6,8 +6,10 @@ count: false
 
 .p60[![Ferris](./images/ferris.svg)]
 
+View slides at `https://nikomatsakis.github.io/rustnation-24/`.
+
 .me[.grey[*by* **Nicholas Matsakis**]]
-.left[.citation[View slides at `https://nikomatsakis.github.io/rustnation-24/`]]
+.footnote[Press `P` to read the transcript.]
 
 ---
 
@@ -2164,7 +2166,7 @@ in the project.
 .footnote[
     ¹ Thanks TC, you're the best! 💜<br>
     ² Three cheeers for Mara, Eric Huss, and Bstrie: you're ALSO the best! 💜<br>
-    ³ We **desperately** need more moderators. The team is currently just two, Josh Gould -- here today! -- and Oli Scherer.
+    ³ We **desperately** need more moderators. The team is currently just two, Josh Gould -- here today! -- and Oli Scherer. You're the BESTEST!
 ]
 
 ???
