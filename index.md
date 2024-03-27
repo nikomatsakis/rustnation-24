@@ -152,7 +152,7 @@ One of the coolest tools we have for that is the Rust edition. The Rust Edition 
 
 ---
 
-# What makes Rust *Rusty*?
+# What makes Rust *Rusty?*
 
 ???
 
@@ -160,7 +160,7 @@ Lately I've gotten kind of obsessed with figuring out what makes Rust *Rust*. I'
 
 --
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | ⚙️ | Reliable | |
 | 🏎️ | Performant, composable abstractions | |
@@ -199,7 +199,7 @@ Finally, accessibility. I'll be honest, I wish this could be "easy", but I don't
 
 # Iterators: performant, composable abstractions
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | ⚙️ | Reliable | |
 | .mark[🏎️] | .mark[Performant, composable abstractions] | |
@@ -422,7 +422,7 @@ In some other languages *who we shall not name*, you find that using high-level,
 
 # Extensibility: minimal built-in
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | ⚙️ | Reliable | |
 | 🏎️ | Performant, composable abstractions | |
@@ -494,7 +494,7 @@ With Rayon, all she has to do is change one line -- `iter` becomes `par_iter` --
 
 # Example: Rayon
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | .mark[⚙️] | .mark[Reliable] | |
 | 🏎️ | Performant, composable abstractions | |
@@ -900,7 +900,7 @@ That pun never gets old.
 
 # Async Rust
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | ⚙️ | Reliable | |
 | .mark[🏎️] | .mark[Performant, composable abstractions] | |
@@ -1376,7 +1376,7 @@ Pretty neat, right? A great example of how concise Rust can be while still gener
 
 # Async Rust gives low-level control
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | ⚙️ | Reliable | |
 | 🏎️ | Performant, composable abstractions | |
@@ -1404,7 +1404,7 @@ For example, check out the embassy runtime, which lets you write async functions
 
 # But Async Rust has some gaps
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | .mark[⚙️] | .mark[Reliable] | |
 | 🏎️ | Performant, composable abstractions | |
@@ -1606,7 +1606,7 @@ No doubt it's going to take some work to develop this, but I think we'll find a 
 
 # Where else can we do better on reliability?
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | .mark[⚙️] | .mark[Reliable] | |
 | 🏎️ | Performant, composable abstractions | |
@@ -1717,7 +1717,7 @@ are able to prove their unsafe code is correct. I don't think this will ever be 
 
 # Scaling accessibility
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | ⚙️ | Reliable | |
 | 🏎️ | Performant, composable abstractions | |
@@ -1985,7 +1985,7 @@ name: values-support
 
 # Rust's values support each other
 
-| | What makes Rust *Rusty*? | |
+| | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
 | ⚙️ | Reliable | |
 | 🏎️ | Performant, composable abstractions | |
