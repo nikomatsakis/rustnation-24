@@ -151,6 +151,7 @@ I would say *that* honor goes to *Stability without stagnation*. Nobody ever get
 One of the coolest tools we have for that is the Rust edition. The Rust Edition lets us make tweaks and changes that affect how the language works but without breaking existing crates. Usually these changes are small and you barely even notice. A key part of this is that it only affects new code or code that opts in -- old code keeps working and building like it always did, and we always support interoperability between old and new editions. So everything keeps going.
 
 ---
+name: rust-rusty1
 
 # What makes Rust *Rusty?*
 
@@ -158,7 +159,10 @@ One of the coolest tools we have for that is the Rust edition. The Rust Edition 
 
 Lately I've gotten kind of obsessed with figuring out what makes Rust *Rust*. I've found that being able to put words to the "ineffable qualities" that we are shooting for when we design can help us to achieve them more reliably.
 
---
+---
+name: rust-rusty2
+
+# What makes Rust *Rusty?*
 
 | | What makes Rust *Rusty?* | |
 | :-- | :-- | :-- |
@@ -171,17 +175,30 @@ Lately I've gotten kind of obsessed with figuring out what makes Rust *Rust*. I'
 .small[**NB:** Good example of where I'm speaking for myself here:<br>
     These are not "official" values of Rust, though I think they (or something like them) should be.]
 
+---
+template: rust-rusty2
+
 ???
 
 This is my latest take on Rust's core goals. There are 5 of them, and they are in order, starting with the most important. Let's go through with them.
 
+---
+template: rust-rusty2
+
+???
+
 So, number one is reliability -- we saw it in Lars's talk. Rust's "secret weapon" and most appealing quality is not really performance, it's the feeling that "if your code compiles, it works". And it makes sense. People could always get performance from C, but they couldn't get reliability.
+
+---
+template: rust-rusty2
+
+???
 
 Number two is *performant and composable abstractions*. This is that sense that, once you've finished the "rough draft" of your code, it's going to perform pretty good, even if you still have to tune it. It's also this idea that you shouldn't have to stop using high-level, idiomatic abstractions to get good performance. Composable meanwhile is the idea that you should be able to take small things and put them together to build more complex, surprising things.
 
-The next one is *low-level control*. Look, Rust is for building systems software, and sometimes you've just got to get down to the bits. If you want to control the memory layout of your struct, or count every memory allocation, we want you to be able to do that. 
-
---
+---
+name: rust-rusty3
+template: rust-rusty2
 
 .abspos.top260.left515[¹]
 
@@ -189,10 +206,20 @@ The next one is *low-level control*. Look, Rust is for building systems software
 
 ???
 
+The next one is *low-level control*. Look, Rust is for building systems software, and sometimes you've just got to get down to the bits. If you want to control the memory layout of your struct, or count every memory allocation, we want you to be able to do that. 
+
 One thing I've noticed is that sometimes, though, people get a bit too obsessed with that. I think you'll find that the more experienced the Rust developer, the fewer lifetimes, references, and advanced features they wind up using. Check out Andres's talk on Easy Mode Rust to learn more about that.
 
+---
+template: rust-rusty3
+
+???
 So what about extensible? Look, some langauges try to package up everything you need. Rust is not that language. We try to be minimal, but to deliver the tools that people can use to build libraries and crates that can do everything. This lets us scale better and we get a lot of power from it.
 
+---
+template: rust-rusty3
+
+???
 Finally, accessibility. I'll be honest, I wish this could be "easy", but I don't think Rust is always easy -- nor can it be, because building reliable, maintainable systems is not easy. But we do always try to be *supportive*, to help you achieve your goals.
 
 ---
