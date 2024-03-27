@@ -361,6 +361,9 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 }
 ```
 
+---
+template: make-thumbnails-at-top
+
 ???
 
 So this is the code that Barbara actually writes. You can also see how iterators are *composable*. You start with a simple iterator but you can build it up to express more complex ideas.
@@ -384,6 +387,9 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
     output
 }
 ```
+
+---
+template: with-translated-code
 
 ???
 
@@ -1693,31 +1699,62 @@ Fortunately things are doing very well here. Some years back, it was very hard. 
 But with the Rust Foundation, things are different. We have dedicated staff, and we've also got people like Walter Lewin coming up with cool, innovative projects that can help bar raise the bar with respect to security. I definitely recommend you check out Walter's talk on Painter later today, very cool stuff.
 
 ---
+name: core-promise
 
 # Delivering on our core promise, Reliability
 
 * Supply chain, infrastructure security.
+---
+template: core-promise
 
 ???
 
 OK, so we're making progess on supply chain security.
 
-What about the trait solver? Well, what about unsoundness like cve-rs? As I said, this was based on a longstanding bug, and the reason that bug has not yet been fixed is two-fold. First, it seemed unlikely to occur in the wild -- thanks cve-rs for violating that by the way -- but also because it required some serious refactoring and rearchitecting internally to the compiler to fix in the right way. I'm very pleased to say that this work took a big step forward when, after years of work, Bastian Keucher recently opened a PR to stabilize the first use of a new trait solver for Rust.
+---
+template: core-promise
+name: core-promise2
 
-The other big development is the work towards a Rust specification. Beginning with Ferrocene -- many folks in the audience today from there -- we have started to have a specification that says what Rust should do. Be sure to go see Pietro's talk to learn more about that. Thanks to Ferrocene generously open sourcing that work, we're able to use it as a starting point to build out an official Rust spec. Shout to Mara -- here today! -- and others doing that work.
+<hr>
 
---
 * Unsoundness like cve-rs?
-    *  New trait solver¹ unblocks bug fixes
---
+    * New trait solver¹ unblocks bug fixes
+---
+template: core-promise2
+
+.footnote[
+    ¹ Shoutout to Bastian, here today, for driving this tirelessly forward!
+]
+
+???
+What about the trait solver? Well, what about unsoundness like cve-rs? As I said, this was based on a longstanding bug, and the reason that bug has not yet been fixed is two-fold. First, it seemed unlikely to occur in the wild -- thanks cve-rs for violating that by the way -- but also because it required some serious refactoring and rearchitecting internally to the compiler to fix in the right way. I'm very pleased to say that this work took a big step forward when, after years of work, Bastian Keucher recently opened a PR to stabilize the first use of a new trait solver for Rust.
+---
+name: core-promise3
+template: core-promise2
+
+<hr>
+
 * Spec work:
     * Ferrocene [open-sourced](https://ferrous-systems.com/blog/ferrocene-open-source/) their [spec](https://github.com/ferrocene/specification)²
     * building on that to [create an official Rust spec](https://blog.rust-lang.org/inside-rust/2023/11/15/spec-vision.html)³
 
---
+---
+template: core-promise3
+
+.footnote[
+    ² Shoutout to Pietro, attend his talk later today!<br>
+    ³ Shoutout to Mara (here today) and Felix and Joel (not)!
+]
+
+???
+The other big development is the work towards a Rust specification. Beginning with Ferrocene -- many folks in the audience today from there -- we have started to have a specification that says what Rust should do. Be sure to go see Pietro's talk to learn more about that. Thanks to Ferrocene generously open sourcing that work, we're able to use it as a starting point to build out an official Rust spec. Shout to Mara -- here today! -- and others doing that work.
+---
+template: core-promise3
+
+<hr>
 
 * Developing Rust solvers
-    * Stable MIR
+    * Stable MIR -- shoutout to Celina Val!
     * [Kani](https://model-checking.github.io/kani-verifier-blog/2023/08/03/turbocharging-rust-code-verification.html), [Cruesot](https://github.com/creusot-rs/creusot), [Prusti](https://github.com/viperproject/prusti-dev), [Aeneas](https://github.com/AeneasVerif/aeneas)
 
 ???
