@@ -13,13 +13,22 @@ count: false
 
 # I wear many hats
 
+???
+
+So, yeah, who am I? 
+
+I am I believe the longest surviving member of the Rust team, having been continuously involved since 2011.
+Though there are some other folks here today -- hi Eric! -- who were around at that time, but who left in the middle.
+
 ---
 
-# Rust language designer
+# Rust language designer¹
+
+.footnote[¹ Shoutout to Tyler Mandry, Rust language design team co-lead, and Josh Triplett, fellow lang team member, both here today.]
 
 ???
 
-Longest surviving member of Rust team
+I've been involved in the design of the language for a long time, and I currently co-lead the language design team, along with Tyler Mandry (also here today!).
 
 ---
 
@@ -32,6 +41,12 @@ Amazon is adopting Rust for many purposes
 I lead Amazon's efforts to invest in Rust and support the Rust language.
 
 I'll talk more about this.
+
+---
+
+# Bursty blogger
+
+![Babysteps](./images/babysteps.png)
 
 ---
 
@@ -110,13 +125,11 @@ As always, Rust's north star remains empowerment
 
 --
 
-### ACCESSIBILITY?
+### PRODUCTIVITY?
 
 ---
 
 # Rust's most important value?
-
---
 
 ### STABILITY *without* STAGNATION
 
@@ -129,7 +142,19 @@ But as long as we persist in growing changing and innovating, we are going to be
 
 ---
 
-# Back to the axioms
+# Rust 2024 is coming!
+
+"Breaking changes where no code breaks..."
+
+.footnote[
+    [Watch the video.](https://www.youtube.com/watch?v=q0aNduqb2Ro)
+]
+
+---
+
+# What makes Rust *Rust*?
+
+--
 
 | | What makes Rust *Rust*? | |
 | :-- | :-- | :-- |
@@ -1205,6 +1230,8 @@ With Async Rust, not as often as we'd like:
 * Misuse of `select!`
 * Uninitialized or mixed executors
 
+--
+
 Want to read more?
 
 * [Stories submitted to the wg-async vision doc](https://rust-lang.github.io/wg-async/vision/submitted_stories/)
@@ -1221,12 +1248,14 @@ Want to read more?
 | Year | Language |
 | ---  | :-- |
 | 2019 | Async fns |
-
---
-| 2023 | Async fn in traits |
-
---
+| 2019-2022 | *Ecosystem development*¹ |
+| 2023 | Async fn in traits² |
 | 2024 | Async closures, generators... |
+
+.footnote[
+    ¹ Shoutout to Alice Ryhl, go see her keynote this evening!<br>
+    2 Big shoutout to Michael Goulet, Eric Holk, Tyler Mandry, other members of Async WG.<br>
+]
 
 ---
 
@@ -1262,15 +1291,33 @@ How many of you saw [cve-rs](https://github.com/Speykious/cve-rs)?
 
 ---
 
-# Delivering on our core promise
+# Infrastructure¹ and supply chain security²
 
-* New trait solver:
+Thank goodness for the Rust Foundation.³
+
+.footnote[
+    ¹ For far too long, Rust infra team was almost entirely Pietro Albini and Mark Simulacrum...<br>
+    ² Shoutout to the members of the [crates.io team](https://www.rust-lang.org/governance/teams/crates-io), led by  Justin Geibel and Tobias Bieniek.<br>
+    &sup3; Who employ JD Nose on Rust Infra, Tobias Biniek on crates.io, and Walter Pearce on Security. Check out Walter's talk on painter!
+]
+
+---
+
+# Delivering on our core promise, Reliability
+
+* Supply chain, infrastructure security.
+
+--
+* New trait solver¹:
     * unblocks bug fixes
 --
 * Spec work:
-    * Ferrocene [open-sourced](https://ferrous-systems.com/blog/ferrocene-open-source/) their [spec](https://github.com/ferrocene/specification)
-    * building on that to [create an official Rust spec](https://blog.rust-lang.org/inside-rust/2023/11/15/spec-vision.html)
+    * Ferrocene [open-sourced](https://ferrous-systems.com/blog/ferrocene-open-source/) their [spec](https://github.com/ferrocene/specification)²
+    * building on that to [create an official Rust spec](https://blog.rust-lang.org/inside-rust/2023/11/15/spec-vision.html)³
+.footnote[¹ Bastian ("lcnr") just [tackled the first major milestone here!](https://github.com/rust-lang/rust/pull/121848)<br>² Pietro has a talk about that at 11.15!
+<br>³ Shoutout to Mara, pnkfelix, Eric Huss, and Joel from the Foundation!]
 --
+
 * Developing Rust solvers
     * Stable MIR
     * [Kani](https://model-checking.github.io/kani-verifier-blog/2023/08/03/turbocharging-rust-code-verification.html), [Cruesot](https://github.com/creusot-rs/creusot), [Prusti](https://github.com/viperproject/prusti-dev), [Aeneas](https://github.com/AeneasVerif/aeneas)
@@ -1550,7 +1597,9 @@ But for this to work...
 
 ???
 
+The assumption here is that as you get more users, some portion of them will naturally come and make improvements.
 
+But that's not a given. In fact, I'd say it's not even necessarily **common**.
 
 ---
  
@@ -1562,7 +1611,53 @@ But for this to work...
 
 ???
 
-Open source burnout has become a bigger and bigger topic of conversation.
+Open source burnout has become a bigger and bigger topic of conversation these days, which I think is good.
+
+Github even has published this interesting guide!
+
+---
+ 
+# Modes
+
+Users
+
+>
+
+Contributors
+
+???
+
+Part of the problem is a rather natural thing. 
+
+To start with, no matter what you do, the pool of users for your project will always be larger -- sometimes
+
+--
+
+>
+
+**Maintainers**
+
+---
+ 
+# So you want to be a maintainer?
+
+* Review PRs.
+
+--
+* Label and categorize ("triage") incoming issues!
+* Help prepare the agenda for Rust team meetings!¹
+* Take notes!
+* Build bots like rfcbot!
+* "Program management" like running the Rust 2024 edition!²
+
+.footnote[
+    ¹ Thanks TC, you're the best!<br>
+    ² Thanks Mara, Eric Huss, Bstrie, you're the best!
+]
+
+---
+ 
+# So you want to be a maintainer?
 
 ---
 
@@ -1574,76 +1669,11 @@ Open source burnout has become a bigger and bigger topic of conversation.
 
 ???
 
-For Rust too. 
+This has been a Hot Topic for Rust for some time. 
 
----
-name: nikohistory
+By 2019, Rust usage had been growing in the wild for some time. We were seeing increased production usage.
 
-# Key moments in Niko history
-
-* 197X: Born 
---
-.abspos.left350.top300.fontsize1000[🧑‍🍼]
----
-template: nikohistory
-name: nikohistory2
-* 198X: Played a LOT of Pool of Radiance on my 8086 IBM PC.
----
-template: nikohistory2
-.center[.p80[![wing commander launch](images/o-nikos.jpg)]]
----
-template: nikohistory2
-name: nikohistory3
-* 199X: Played a LOT of Wing Commander.
---
-.center[.p80[![wing commander launch](images/wing-commander-launch.png)]]
----
-template: nikohistory3
-name: nikohistory4
-* 2001: Graduated from MIT
---
-.center[.p30[![MIT Yearbook image](images/mit-yearbook.jpg)]]
----
-template: nikohistory4
-name: nikohistory5
-* 2004: Got married
---
-¹
-.abspos.left350.top450.fontsize800[💍]
-.footnote[¹ BEST DECISION EVER]
----
-template: nikohistory5
-name: nikohistory6
-* 2011: My daughter is born 🎉
---
-.abspos.left350.top450.fontsize800[🚼]
----
-template: nikohistory6
-name: nikohistory7
-* 2011: Started working at Mozilla on Rust
---
-.abspos.left600.top200.width250[![moz research dino](images/open-poster.jpg)]
----
-template: nikohistory7
-name: nikohistory8
-* 2013: Moved from California to Boston
---
-¹
-.abspos.left600.top450.fontsize1000[🌨️]
-.footnote[¹ NOT ENOUGH SNOW]
----
-template: nikohistory8
-name: nikohistory9
-* 2015: Rust 1.0
---
-.abspos.left600.top450.fontsize1000[😅]
----
-template: nikohistory9
-name: nikohistory10
-* 2021: Joined Amazon
---
-.abspos.left600.top450.fontsize1000[📦]
-
+But that usage was not yet translating into increased investment in Rust. Most (but not all) of the people working full time on Rust worked at Mozilla. Others were volunteers.
 
 ---
  
@@ -1651,29 +1681,42 @@ name: nikohistory10
 
 .center[.p60[![Hippe Niko](./images/hippie-niko.png)]]
 
+???
+
+At the time, working at Mozilla, a dedicated open source company, I pictured myself as pretty bad-ass.
+We were open source experts, on the cutting edge of technology, getting to do cool things and freely collaborate.
+
 ---
  
 # How I imagined "corporate jobs" and "big tech"
 
 .center[.p60[![Hippe Niko](./images/suit-dude.png)]]
 
+???
+
+I had heard many stories of how things could go wrong when "big tech" engaged with open source.
+There was a lot of fear that companies would try to take over what we had built with Rust.
+And this was why I wanted to join Amazon -- because I saw that the next step for Rust
+was going to be having bigger companies funding teams of people to work on it,
+and I wanted to be involved in helping to show how those teams could work.
+
 ---
  
-# What have I found?
+# Wisdom
 
-.center[.p90[![Sustainability](./images/Sustainability-Blog.png)]]
-
-.footnote[[Read it here.](https://smallcultfollowing.com/babysteps/blog/2019/01/07/rust-in-2019-focus-on-sustainability/)]
+> Ah, but I was so much older then.<br>
+> I'm younger than that now.<br>
+><br>
+> — Bob Dylan, "My Back Pages"
 
 ???
 
-Rust was at a turning point.
-
-I could see that big companies were getting involved.
-
-It was clear that Rust was going to from a time of scarcity
-
-Somewhat hubroustically, I wanted to be sure it was "done right"
+In retrospect, there was a decent measure of hubris there.
+I didn't know how much I had yet to learn, and I'm sure there's still plenty more.
+At the same time, 3 years in, I still think that this is one of the most interesting challenges facing Rust:
+we have to continue to work on growing adoption and making Rust better,
+of course,
+but we also have to work on better ways to *channel* that adoption.
 
 ---
  
