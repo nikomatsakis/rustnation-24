@@ -733,8 +733,6 @@ Welp, now I know!
 
 ![bill&ted's council from the future](images/bill-ted-future-council.jpg)
 
-.footnote["Be excellent to each other."]
-
 --
 
 ## `std::future::Future`, that is
@@ -1651,88 +1649,53 @@ To start with, no matter what you do, the pool of users for your project will al
 * "Program management" like running the Rust 2024 edition!²
 
 .footnote[
-    ¹ Thanks TC, you're the best!<br>
-    ² Thanks Mara, Eric Huss, Bstrie, you're the best!
+    ¹ Thanks TC, you're the best! 💜<br>
+    ² Three cheeers for Mara, Eric Huss, and Bstrie: you're ALSO the best! 💜
 ]
 
 ---
+
+# So many new and great tools
+
+* Open source teams at many companies
+* Rust Foundation (grants, yes, but much more too)
+
+--- 
  
-# So you want to be a maintainer?
+# Where I hope we get to¹
+
+* Rich, diverse set of both career maintainers and volunteers
+* Inclusive community where everyone feels welcome
+* Well-documented pathways to be a part of Rust
+    * Structured, cohort-based² onboarding!
+    * For [more than coders](https://smallcultfollowing.com/babysteps/blog/2019/04/15/more-than-coders/)!
+
+
+.footnote[
+    ¹ Speaking for myself here, though if you disagree, I'd like to know why.<br>
+    ² Hat tip to Doc Jones, who really helped me see the importance of this.
+]
 
 ---
 
-# Rust is no exception
+# One last shout-out
 
-.center[.p90[![Sustainability](./images/Sustainability-Blog.png)]]
-
-.footnote[[Read it here.](https://smallcultfollowing.com/babysteps/blog/2019/01/07/rust-in-2019-focus-on-sustainability/)]
+.center.p30[![Ernest](./images/ernest.png)]
+.center[    ...and the rest of the Rust Nation team.]
 
 ???
 
-This has been a Hot Topic for Rust for some time. 
-
-By 2019, Rust usage had been growing in the wild for some time. We were seeing increased production usage.
-
-But that usage was not yet translating into increased investment in Rust. Most (but not all) of the people working full time on Rust worked at Mozilla. Others were volunteers.
-
----
- 
-# How I imagined myself at Mozilla
-
-.center[.p60[![Hippe Niko](./images/hippie-niko.png)]]
-
-???
-
-At the time, working at Mozilla, a dedicated open source company, I pictured myself as pretty bad-ass.
-We were open source experts, on the cutting edge of technology, getting to do cool things and freely collaborate.
+I want to closue out with one last shout-out.
+I've made a point to highlight people who are active in the Rust org,
+especially the ones who are here today. I'm sure I missed a lot of you.
+But I want to make sure we recognize the great people who assembled
+such a great conference, with such great speakers, and such a great audience.
+Thanks Ernest and the rest of you!
 
 ---
- 
-# How I imagined "corporate jobs" and "big tech"
 
-.center[.p60[![Hippe Niko](./images/suit-dude.png)]]
+# Thanks
 
-???
+![bill&ted's council from the future](images/bill-ted-future-council.jpg)
 
-I had heard many stories of how things could go wrong when "big tech" engaged with open source.
-There was a lot of fear that companies would try to take over what we had built with Rust.
-And this was why I wanted to join Amazon -- because I saw that the next step for Rust
-was going to be having bigger companies funding teams of people to work on it,
-and I wanted to be involved in helping to show how those teams could work.
-
----
- 
-# Wisdom
-
-> Ah, but I was so much older then.<br>
-> I'm younger than that now.<br>
-><br>
-> — Bob Dylan, "My Back Pages"
-
-???
-
-In retrospect, there was a decent measure of hubris there.
-I didn't know how much I had yet to learn, and I'm sure there's still plenty more.
-At the same time, 3 years in, I still think that this is one of the most interesting challenges facing Rust:
-we have to continue to work on growing adoption and making Rust better,
-of course,
-but we also have to work on better ways to *channel* that adoption.
-
----
- 
-# Things I've learned
-
-* **Open source helps those who help themselves**
-
---
-* **Open source is a force multiplier**
-
-
----
- 
-# What did I find
-
-* Passionate Rust users
-* Lots of interesting ideas
-
-
+.center["Be excellent to each other."]
