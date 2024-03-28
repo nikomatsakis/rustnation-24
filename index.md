@@ -17,7 +17,8 @@ View slides at `https://nikomatsakis.github.io/rustnation-24/`.
 
 ???
 
-So, yeah, who am I? I've been involved in Rust a long time, and along the way, I've accumulated a great many hats. Not literal hats, but different roles that I play.
+So, yeah, who am I? I've been involved in Rust a long time, and along the 
+way, I've wound up playing a number of different roles.
 
 ---
 
@@ -65,39 +66,16 @@ On the other hand, all those roles inform that opinion, and I don't really belie
 
 ---
 
-# Rust in 2024
-
-What I see...
-
-* GREAT OPPORTUNITY
-* GREAT RISK
-
-???
-
-So, where are we at? It's 2024, Rust is being used more and more, and clearly there's a *ton* of opportunity for it to grow. But that's because I'm kind of a pessimist, and I always believe that I'm going to wake up tommorrow to find that people don't like Rust, not really.
-
----
-
-# Rust in 2024
-
-What I see...
-
-* GREAT OPPORTUNITY
-* ~~GREAT RISK~~ SOME RISK
-
-???
-
-More realistically, there's *some* risk -- primarily, the risk I see is that we will get complacent. I mean, Rust is great, but it can be so much better!
-
----
-
 # Our North Star
 
 ### Empowering everyone to build reliable, efficient, and maintainable software
 
 ???
 
-So what do we want Rust to be? Well, this is our north star -- we want Rust to empower *everyone*. That word does a lot of work, we want Rust to make building software more accessible to more people. We want it to empower them to build reliable, efficient, and -- above all -- maintainable software.
+Rust has always had a consistent north star: we want Rust to empower
+*everyone* -- that word *everyone* does a lot of work, we want Rust to broaden
+the pool of people -- building reliable, efficient, and 
+-- above all -- maintainable software.
 
 --
 
@@ -180,31 +158,23 @@ template: rust-rusty2
 
 ???
 
-This is my latest take on Rust's core goals. There are 5 of them, and they are in order, starting with the most important. Let's go through with them.
+This is my latest take on Rust's core goals. There are 5 of them, and they are in order, starting with the most important. Let's go through them briefly.
 
----
-template: rust-rusty2
+Reliability: "if it compiles, it works" -- or at least, if it doesn't, it's
+*your* fault, not *Rust's* fault.
 
-???
+Performant: the "first draft" of your Rust code should perform pretty well. 
+And while you may have to optimize, you won't normally have to do so by making 
+your code low-level and cryptic.
 
-So, number one is reliability -- we saw it in Lars's talk. Rust's "secret weapon" and most appealing quality is not really performance, it's the feeling that "if your code compiles, it works". And it makes sense. People could always get performance from C, but they couldn't get reliability.
-
----
-template: rust-rusty2
-
-???
-
-Number two is *performant and composable abstractions*. This is that sense that, once you've finished the "rough draft" of your code, it's going to perform pretty good, even if you still have to tune it. 
-
-It's also this idea that you shouldn't have to stop using high-level, idiomatic abstractions to get good performance. 
-
-Composable meanwhile is the idea that you should be able to take small things and put them together to build more complex, surprising things.
+Low-level control: look, if you want to account for every bit in your struct
+or count every memory allocation, we want to let you. Rust is for systems software, and sometimes that's necessary.
 
 ---
 name: rust-rusty3
 template: rust-rusty2
 
-.abspos.top260.left515[¹]
+.abspos.top270.left510[¹]
 
 .footnote[¹ Hopefully you caught Andre Bogus's talk yesterday on Easy Mode Rust! (Also, thanks Andre for *This Week in Rust*!)]
 
@@ -213,21 +183,30 @@ template: rust-rusty3
 
 ???
 
-The next one is *low-level control*. Look, Rust is for building systems software, and sometimes you've just got to get down to the bits. If you want to control the memory layout of your struct, or count every memory allocation, we want you to be able to do that. 
-
-One thing I've noticed is that sometimes, though, people get a bit too obsessed with that. I think you'll find that the more experienced the Rust developer, the fewer lifetimes, references, and advanced features they wind up using. Check out Andres's talk on Easy Mode Rust to learn more about that.
-
----
-template: rust-rusty3
-
-???
-So what about extensible? Look, some langauges try to package up everything you need. Rust is not that language. We try to be minimal, but to deliver the tools that people can use to build libraries and crates that can do everything. This lets us scale better and we get a lot of power from it.
+Side note but I've definitely noticed that sometimes, though, people get a 
+bit too obsessed with that. You can tell an experienced Rust developer because
+they avoid complex lifetimes etc unless they're really needed.
+Andre Bogus gave a great talk on this yesterday, "Easy Mode Rust", so 
+check it out.
 
 ---
 template: rust-rusty3
 
 ???
-Finally, accessibility. I'll be honest, I wish this could be "easy", but I don't think Rust is always easy -- nor can it be, because building reliable, maintainable systems is not easy. But we do always try to be *supportive*, to help you achieve your goals.
+Extensible: some languages try to package up everything you will ever need.
+Rust is not that language. We try to give you a good starting point and then
+give you the tools to build the rest. This is more scalable.
+
+---
+template: rust-rusty3
+
+???
+
+Accessibility: I'll be honest. I wish I could say that being Rusty meant being
+*easy*, but we all know that's not true. And partly that's the domain.
+Building reliable, maintainable software that lasts a long time is HARD.
+But while we can't make it *easy*, we can be supportive, and do our best to 
+help, and that's our goal.
 
 ---
 
@@ -243,7 +222,9 @@ Finally, accessibility. I'll be honest, I wish this could be "easy", but I don't
 
 ???
 
-So, let's look at a case study of one beloved part of Rust's design that I think exemplifies these values pretty well. If you've ever written any Rust, you've probably worked with **iterators**.
+OK, let's see how these work in action. I'm going to illustrate by taking
+a close look at *iterators*, which I think are a great example of a performant,
+composable abstraction.
 
 ---
 
@@ -277,76 +258,11 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 
 ???
 
-One day, Barbara is reading over some code that creates thumbnails for a vector of images in the application.
-
----
-template: thumbnails
-.arrow.abspos.left400.top90.rotSW[![Arrow](./images/Arrow.png)]
-
----
-template: thumbnails
-.line2[![Arrow](./images/Arrow.png)]
-
----
-template: thumbnails
-.line3[![Arrow](./images/Arrow.png)]
-
-.abspos.left500.top165[
-```rust
-// impl Iterator<Item = &Image>
-```
-]
-
---
-
-.arrow.abspos.left600.top145.rotS[![Arrow](./images/Arrow.png)]
-
---
-
-.arrow.abspos.left730.top145.rotS[![Arrow](./images/Arrow.png)]
-
----
-template: thumbnails
-.line4[![Arrow](./images/Arrow.png)]
-
-.abspos.left500.top195[
-```rust
-// impl Iterator<Item = Image>
-```
-]
-
---
-
-.arrow.abspos.left250.top175.rotSW[![Arrow](./images/Arrow.png)]
---
-
-.arrow.abspos.left450.top175.rotSW[![Arrow](./images/Arrow.png)]
-
---
-
-.arrow.abspos.left730.top175.rotS[![Arrow](./images/Arrow.png)]
-
----
-template: thumbnails
-.line5[![Arrow](./images/Arrow.png)]
-
-.abspos.left500.top220[
-```rust
-// ?
-```
-]
-
---
-
-.arrow.abspos.left550.top150.rotNW[![Arrow](./images/Arrow.png)]
-
---
-
-.abspos.left500.top220[
-```rust
-// Vec<Image>
-```
-]
+Barbara is working on an app and she needs to take a list of images
+and create thumbnails for them. So, she sits down and bangs out this code
+using iterators. You've probably written code like it before.
+It's a great example of composability, how the iterator APIs let you create
+combine operations like map, filter, to do non-trivial things.
 
 ---
 
@@ -366,9 +282,9 @@ template: make-thumbnails-at-top
 
 ???
 
-So this is the code that Barbara actually writes. You can also see how iterators are *composable*. You start with a simple iterator but you can build it up to express more complex ideas.
-
-Now, in truth, you could write code much like this in just about any language. What makes Rust special is a trick that we learned from C++, a trick called *zero-cost abstractions*. The idea is that high-level abstractions like iterator can be written in a way that they are *guaranteed* to compile down to really efficient code -- well, so long as you enabled compiler optimizations. Don't forget to run with `--release`! Very important.
+This is the code Barbara writes. But what is the code that *runs*?
+This is where Rust takes advantage of a really cool trick that we learned
+from C++, which is called *zero-cost abstractions*. 
 
 ---
 
@@ -393,7 +309,11 @@ template: with-translated-code
 
 ???
 
-Anyway, once the compiler is done with your code, it's going to look something like this, which is pretty much what you'd have done if you wrote it by hand. In fact, it's going to have a few optimizations that you maybe would have overlooked.
+The idea is that you can write this high-level code but, once the compiler 
+is finished optimizing, what you get out is going to be equivalent to 
+the low-level code you would've written by hand.
+So something like this.  In fact, this code includes a few optimizations 
+you might not have thought of.
 
 ---
 
@@ -413,7 +333,8 @@ template: with-translated-code
 
 ???
 
-And when you access an element from an array, that normally requires bounds checks, but since iterators don't expose this index, it can't be out of bounds, so we can use unsafe code to skip that....
+And when you access an element from an array, that normally requires 
+bounds checks.
 
 ---
 
@@ -443,7 +364,8 @@ fn make_thumbnails(images: &[Image]) -> Vec<Image> {
 
 ???
 
-So you get something like this.
+But since we're using iterators, we know the bounds are in-scope,
+so we can just skip them.  So you get something like this.
 
 --
 
@@ -456,7 +378,11 @@ Which would *you* rather write?
 
 ???
 
-In some other languages *who we shall not name*, you find that using high-level, nice features like this comes with a kind of *abstraction tax*. You can use them, but for the most efficient parts of the code, you have to rewrite it to work in this low-level way. With Rust, when things work right, this is not necessary.
+And this is Rust's promise: high-level things like iterators and closures
+don't come with hidden costs. Those costs can become a kind of abstraction
+tax that means that when you really need perforance you have to write
+low-level code. In Rust, at least when things are working right, that's not
+necessary.
 
 ---
 
