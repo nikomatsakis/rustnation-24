@@ -1,3 +1,1 @@
-# Rust Nation '24
-
-> This year will be the 3rd Rust edition, Rust 2024, and marks 9 years since Rust 1.0 was released in May of 2015. In that time Rust has become a foundational technology used everywhere from kernels to spacecraft to cloud data centers. As Rust (and its community) grows, how do we stay true to our mission of empowering people to build everyone to build reliable and efficient software? In this talk we'll look at what has been happening lately with Rust as well as some of the challenges that we will need to tackle over the next few years.
+# Rust Cameroon '25
