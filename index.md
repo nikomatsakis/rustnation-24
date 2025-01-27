@@ -2,7 +2,7 @@ class: center
 name: title
 count: false
 
-# Rust 2024 and beyond
+# Rust Past and Future
 
 .p60[![Ferris](./images/ferris.svg)]
 
